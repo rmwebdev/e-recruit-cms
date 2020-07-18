@@ -1,0 +1,449 @@
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/Puninar-Repository/!svn/ver/745/WEB/erec/database/migrations
+END
+2019_01_16_124808_addcolumnaddressandinterviewerontr_candidate.php
+K 25
+svn:wc:ra_dav:version-url
+V 128
+/Puninar-Repository/!svn/ver/298/WEB/erec/database/migrations/2019_01_16_124808_addcolumnaddressandinterviewerontr_candidate.php
+END
+2018_12_26_093230_addcolumnstartendmonthtablecandidate.php
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/Puninar-Repository/!svn/ver/163/WEB/erec/database/migrations/2018_12_26_093230_addcolumnstartendmonthtablecandidate.php
+END
+2018_12_13_170257_rename_table_tr_assessment_add_column_candidate_id.php
+K 25
+svn:wc:ra_dav:version-url
+V 134
+/Puninar-Repository/!svn/ver/161/WEB/erec/database/migrations/2018_12_13_170257_rename_table_tr_assessment_add_column_candidate_id.php
+END
+2019_01_21_172756_addskill.php
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/Puninar-Repository/!svn/ver/298/WEB/erec/database/migrations/2019_01_21_172756_addskill.php
+END
+2018_12_24_175710_createtablejobfptk.php
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/Puninar-Repository/!svn/ver/163/WEB/erec/database/migrations/2018_12_24_175710_createtablejobfptk.php
+END
+2014_10_12_000000_create_users_table.php
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/Puninar-Repository/!svn/ver/152/WEB/erec/database/migrations/2014_10_12_000000_create_users_table.php
+END
+2018_12_13_163838_rename_table_tr_assessment.php
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/Puninar-Repository/!svn/ver/161/WEB/erec/database/migrations/2018_12_13_163838_rename_table_tr_assessment.php
+END
+2019_01_03_150542_updatecolumnforupdatecolumnjobfptk.php
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/Puninar-Repository/!svn/ver/170/WEB/erec/database/migrations/2019_01_03_150542_updatecolumnforupdatecolumnjobfptk.php
+END
+2018_12_20_093402_create_table_job_experience_for_new_column.php
+K 25
+svn:wc:ra_dav:version-url
+V 126
+/Puninar-Repository/!svn/ver/161/WEB/erec/database/migrations/2018_12_20_093402_create_table_job_experience_for_new_column.php
+END
+2018_12_05_035837_add_new_column_on_tr_users.php
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/Puninar-Repository/!svn/ver/152/WEB/erec/database/migrations/2018_12_05_035837_add_new_column_on_tr_users.php
+END
+2018_12_05_031523_rename_table_user.php
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/Puninar-Repository/!svn/ver/152/WEB/erec/database/migrations/2018_12_05_031523_rename_table_user.php
+END
+2019_02_02_231221_addcolumnjoindate.php
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/Puninar-Repository/!svn/ver/425/WEB/erec/database/migrations/2019_02_02_231221_addcolumnjoindate.php
+END
+2019_02_18_094505_addcolumninterviewprocess.php
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/Puninar-Repository/!svn/ver/583/WEB/erec/database/migrations/2019_02_18_094505_addcolumninterviewprocess.php
+END
+2018_12_18_142322_create_table_language_skill.php
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/Puninar-Repository/!svn/ver/161/WEB/erec/database/migrations/2018_12_18_142322_create_table_language_skill.php
+END
+2018_12_27_102617_createtablehistoricandidateprocess.php
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/Puninar-Repository/!svn/ver/164/WEB/erec/database/migrations/2018_12_27_102617_createtablehistoricandidateprocess.php
+END
+2018_12_05_061632_create_tr_assessment.php
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/Puninar-Repository/!svn/ver/152/WEB/erec/database/migrations/2018_12_05_061632_create_tr_assessment.php
+END
+2019_01_10_105251_addcolumnontrjobfptk.php
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/Puninar-Repository/!svn/ver/209/WEB/erec/database/migrations/2019_01_10_105251_addcolumnontrjobfptk.php
+END
+2019_01_21_172449_addoccupation.php
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/Puninar-Repository/!svn/ver/298/WEB/erec/database/migrations/2019_01_21_172449_addoccupation.php
+END
+2019_01_21_171322_addtmfamily.php
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/Puninar-Repository/!svn/ver/298/WEB/erec/database/migrations/2019_01_21_171322_addtmfamily.php
+END
+2018_12_06_065535_add_column_parent_on_tr_parameter.php
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/Puninar-Repository/!svn/ver/152/WEB/erec/database/migrations/2018_12_06_065535_add_column_parent_on_tr_parameter.php
+END
+2019_01_02_181245_addcolumndivisionattablejobfptk.php
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/Puninar-Repository/!svn/ver/170/WEB/erec/database/migrations/2019_01_02_181245_addcolumndivisionattablejobfptk.php
+END
+2014_10_12_100000_create_password_resets_table.php
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/Puninar-Repository/!svn/ver/152/WEB/erec/database/migrations/2014_10_12_100000_create_password_resets_table.php
+END
+2018_12_31_115018_addcolumnpasswordontablecandidate.php
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/Puninar-Repository/!svn/ver/170/WEB/erec/database/migrations/2018_12_31_115018_addcolumnpasswordontablecandidate.php
+END
+2018_12_26_091647_editcolumnstartendmonthontablecandidate.php
+K 25
+svn:wc:ra_dav:version-url
+V 123
+/Puninar-Repository/!svn/ver/163/WEB/erec/database/migrations/2018_12_26_091647_editcolumnstartendmonthontablecandidate.php
+END
+2019_01_21_172623_adciti.php
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/Puninar-Repository/!svn/ver/298/WEB/erec/database/migrations/2019_01_21_172623_adciti.php
+END
+2018_12_05_065418_create_tr_job_registration.php
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/Puninar-Repository/!svn/ver/152/WEB/erec/database/migrations/2018_12_05_065418_create_tr_job_registration.php
+END
+2019_01_18_112807_addcolumnconfirmationontr_histroy_process.php
+K 25
+svn:wc:ra_dav:version-url
+V 125
+/Puninar-Repository/!svn/ver/263/WEB/erec/database/migrations/2019_01_18_112807_addcolumnconfirmationontr_histroy_process.php
+END
+2018_12_05_062313_create_tm_assessment.php
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/Puninar-Repository/!svn/ver/152/WEB/erec/database/migrations/2018_12_05_062313_create_tm_assessment.php
+END
+2019_02_05_152014_addcolumnapprovedemail.php
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/Puninar-Repository/!svn/ver/436/WEB/erec/database/migrations/2019_02_05_152014_addcolumnapprovedemail.php
+END
+2019_01_17_230707_addcolumnaddresscontactperson_on_tabletrhistoryprocess.php
+K 25
+svn:wc:ra_dav:version-url
+V 138
+/Puninar-Repository/!svn/ver/253/WEB/erec/database/migrations/2019_01_17_230707_addcolumnaddresscontactperson_on_tabletrhistoryprocess.php
+END
+2018_12_24_175550_deletetablejobfptkforchange.php
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/Puninar-Repository/!svn/ver/163/WEB/erec/database/migrations/2018_12_24_175550_deletetablejobfptkforchange.php
+END
+2019_01_21_172421_addtmreligion.php
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/Puninar-Repository/!svn/ver/298/WEB/erec/database/migrations/2019_01_21_172421_addtmreligion.php
+END
+2019_01_03_145714_updatecolumnjobfptk.php
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/Puninar-Repository/!svn/ver/170/WEB/erec/database/migrations/2019_01_03_145714_updatecolumnjobfptk.php
+END
+2018_12_05_063755_create_tr_job_experience.php
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/Puninar-Repository/!svn/ver/152/WEB/erec/database/migrations/2018_12_05_063755_create_tr_job_experience.php
+END
+2019_02_18_095437_addcolumninvitationprocess.php
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/Puninar-Repository/!svn/ver/583/WEB/erec/database/migrations/2019_02_18_095437_addcolumninvitationprocess.php
+END
+2019_01_21_172642_addstate.php
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/Puninar-Repository/!svn/ver/298/WEB/erec/database/migrations/2019_01_21_172642_addstate.php
+END
+2019_02_27_070506_addcolumncityoncandidate.php
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/Puninar-Repository/!svn/ver/745/WEB/erec/database/migrations/2019_02_27_070506_addcolumncityoncandidate.php
+END
+2019_01_22_173950_addcolumngenderontr_candidate.php
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/Puninar-Repository/!svn/ver/308/WEB/erec/database/migrations/2019_01_22_173950_addcolumngenderontr_candidate.php
+END
+2019_01_21_172514_addpoint.php
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/Puninar-Repository/!svn/ver/298/WEB/erec/database/migrations/2019_01_21_172514_addpoint.php
+END
+2019_01_21_172558_addlist_school.php
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/Puninar-Repository/!svn/ver/298/WEB/erec/database/migrations/2019_01_21_172558_addlist_school.php
+END
+2019_01_21_172358_addtmlanguage.php
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/Puninar-Repository/!svn/ver/298/WEB/erec/database/migrations/2019_01_21_172358_addtmlanguage.php
+END
+2018_12_05_062711_create_tm_parameter.php
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/Puninar-Repository/!svn/ver/152/WEB/erec/database/migrations/2018_12_05_062711_create_tm_parameter.php
+END
+2018_12_20_063058_create_table_education_background.php
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/Puninar-Repository/!svn/ver/161/WEB/erec/database/migrations/2018_12_20_063058_create_table_education_background.php
+END
+2018_12_20_131616_create_table_skill.php
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/Puninar-Repository/!svn/ver/161/WEB/erec/database/migrations/2018_12_20_131616_create_table_skill.php
+END
+2018_12_18_103939_create_table_tr_org_information.php
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/Puninar-Repository/!svn/ver/161/WEB/erec/database/migrations/2018_12_18_103939_create_table_tr_org_information.php
+END
+2018_12_05_043601_create_table_tr_candidate.php
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/Puninar-Repository/!svn/ver/152/WEB/erec/database/migrations/2018_12_05_043601_create_table_tr_candidate.php
+END
+2018_12_27_102505_droptablehistoricandidateprocess.php
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/Puninar-Repository/!svn/ver/164/WEB/erec/database/migrations/2018_12_27_102505_droptablehistoricandidateprocess.php
+END
+2019_01_31_171407_addcolumnrequester_email.php
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/Puninar-Repository/!svn/ver/403/WEB/erec/database/migrations/2019_01_31_171407_addcolumnrequester_email.php
+END
+2019_02_01_094012_addcolumnactualstaff.php
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/Puninar-Repository/!svn/ver/425/WEB/erec/database/migrations/2019_02_01_094012_addcolumnactualstaff.php
+END
+2019_01_21_172703_addeducation.php
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/Puninar-Repository/!svn/ver/298/WEB/erec/database/migrations/2019_01_21_172703_addeducation.php
+END
+2018_12_05_070804_create_tr_history_process.php
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/Puninar-Repository/!svn/ver/152/WEB/erec/database/migrations/2018_12_05_070804_create_tr_history_process.php
+END
+2018_12_19_100325_delete_create_and_update_at_on_table_candidate.php
+K 25
+svn:wc:ra_dav:version-url
+V 130
+/Puninar-Repository/!svn/ver/161/WEB/erec/database/migrations/2018_12_19_100325_delete_create_and_update_at_on_table_candidate.php
+END
+2018_12_05_041836_create_table_job_fptk.php
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/Puninar-Repository/!svn/ver/152/WEB/erec/database/migrations/2018_12_05_041836_create_table_job_fptk.php
+END
+2018_12_05_032118_rename_column_id_on_truser.php
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/Puninar-Repository/!svn/ver/152/WEB/erec/database/migrations/2018_12_05_032118_rename_column_id_on_truser.php
+END
+2018_12_05_034213_create_column_on_tr_users.php
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/Puninar-Repository/!svn/ver/152/WEB/erec/database/migrations/2018_12_05_034213_create_column_on_tr_users.php
+END
+2019_01_09_150508_addcolumnontrjobfptk.php
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/Puninar-Repository/!svn/ver/197/WEB/erec/database/migrations/2019_01_09_150508_addcolumnontrjobfptk.php
+END
+2019_01_15_143323_addcolumhistorypositionname.php
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/Puninar-Repository/!svn/ver/239/WEB/erec/database/migrations/2019_01_15_143323_addcolumhistorypositionname.php
+END
+2018_12_20_093206_delete_table_job_experience_for_update_column.php
+K 25
+svn:wc:ra_dav:version-url
+V 129
+/Puninar-Repository/!svn/ver/161/WEB/erec/database/migrations/2018_12_20_093206_delete_table_job_experience_for_update_column.php
+END
+2019_01_10_172217_addcolumnreason_tr_history_process.php
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/Puninar-Repository/!svn/ver/222/WEB/erec/database/migrations/2019_01_10_172217_addcolumnreason_tr_history_process.php
+END
+2018_12_16_213219_table_tr_family.php
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/Puninar-Repository/!svn/ver/161/WEB/erec/database/migrations/2018_12_16_213219_table_tr_family.php
+END
+2019_01_10_115419_dropcolumnontr_job_fptk.php
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/Puninar-Repository/!svn/ver/211/WEB/erec/database/migrations/2019_01_10_115419_dropcolumnontr_job_fptk.php
+END
+2018_12_17_173701_create_table_tr_course.php
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/Puninar-Repository/!svn/ver/161/WEB/erec/database/migrations/2018_12_17_173701_create_table_tr_course.php
+END
+2019_01_18_105848_createtableinterest.php
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/Puninar-Repository/!svn/ver/298/WEB/erec/database/migrations/2019_01_18_105848_createtableinterest.php
+END
+2018_12_13_170314_rename_table_tr_assessment_add_column_asses_quest_id.php
+K 25
+svn:wc:ra_dav:version-url
+V 136
+/Puninar-Repository/!svn/ver/161/WEB/erec/database/migrations/2018_12_13_170314_rename_table_tr_assessment_add_column_asses_quest_id.php
+END
+2018_12_19_101141_add_column_insert_by_insert_time_update_by_dll.php
+K 25
+svn:wc:ra_dav:version-url
+V 130
+/Puninar-Repository/!svn/ver/161/WEB/erec/database/migrations/2018_12_19_101141_add_column_insert_by_insert_time_update_by_dll.php
+END
+2019_01_15_140258_addcolumnontrcandidate.php
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/Puninar-Repository/!svn/ver/236/WEB/erec/database/migrations/2019_01_15_140258_addcolumnontrcandidate.php
+END
+2019_02_04_141527_addcolumnnamerequester.php
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/Puninar-Repository/!svn/ver/432/WEB/erec/database/migrations/2019_02_04_141527_addcolumnnamerequester.php
+END
+2019_01_14_085257_createtableemergencycontac.php
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/Puninar-Repository/!svn/ver/298/WEB/erec/database/migrations/2019_01_14_085257_createtableemergencycontac.php
+END
+2018_12_14_150112_add_column_licence_document.php
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/Puninar-Repository/!svn/ver/161/WEB/erec/database/migrations/2018_12_14_150112_add_column_licence_document.php
+END
+2018_12_13_164705_rename_table_tr_assessment_2.php
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/Puninar-Repository/!svn/ver/161/WEB/erec/database/migrations/2018_12_13_164705_rename_table_tr_assessment_2.php
+END
+2019_01_21_172531_addmajor.php
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/Puninar-Repository/!svn/ver/298/WEB/erec/database/migrations/2019_01_21_172531_addmajor.php
+END
+2019_01_23_102336_addcolumnplace_of_birth.php
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/Puninar-Repository/!svn/ver/313/WEB/erec/database/migrations/2019_01_23_102336_addcolumnplace_of_birth.php
+END
+2019_01_21_172736_addresign_cause.php
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/Puninar-Repository/!svn/ver/298/WEB/erec/database/migrations/2019_01_21_172736_addresign_cause.php
+END
+2019_02_01_175109_addcolumncdi.php
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/Puninar-Repository/!svn/ver/425/WEB/erec/database/migrations/2019_02_01_175109_addcolumncdi.php
+END

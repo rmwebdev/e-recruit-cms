@@ -1,0 +1,121 @@
+@extends('layouts.frontend')
+
+@section('content_frontend')
+@php 
+	$userinfo = Session::get('userinfo'); 
+@endphp
+<div class="container  my-4">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header" style="background-color:#fff">
+                    <i class="fa fa-edit"></i> Confirmation
+                    <a href="{{url('/')}}" class="btn btn-warning pull-right">CANCEL</a>
+                </div>
+
+                <div class="card-body">
+                  	<div class="section">
+	                  	 <div>
+	                  	 	<div class="alert alert-success" role="alert">
+								<strong>Congratulation {!! $userinfo['name_holder'] !!} !</strong> You have <strong> {!! ($count > 0) ? "New" : "" !!} {{$count}} notification </strong> for called interview.
+							</div>
+						
+
+	                  	 	<table class="table table-responsive table-striped">
+	                  	 		@foreach($history as $history)
+									<tr>
+										<td>Position Name</td>
+										<td>:</td>
+										<td>
+											{{$history->history_position_name}}
+ 												<span class="invalid-feedback" role="alert"></span>
+                                        </td>
+									</tr>
+									<tr>
+										<td>Date Interview</td>
+										<td>:</td>
+										<td>
+											{{tanggal_indo_lengkap($history->history_date)}}
+ 												<span class="invalid-feedback" role="alert"></span>
+                                        </td>
+									</tr>
+									<tr>
+										<td>Time</td>
+										<td>:</td>
+										<td>
+											{!! date('H:i:s', strtotime($history->history_date)) !!}
+ 												<span class="invalid-feedback" role="alert"></span>
+                                        </td>
+									</tr>
+
+									<tr>
+										<td>Interviewer</td>
+										<td>:</td>
+										<td>
+											{!! $history->history_contact_person !!}
+ 												<span class="invalid-feedback" role="alert"></span>
+                                        </td>
+									</tr>
+
+									<tr>
+										<td>Address</td>
+										<td>:</td>
+										<td>
+											{!! $history->history_address !!}
+ 												<span class="invalid-feedback" role="alert"></span>
+                                        </td>
+									</tr>
+
+									<tr>
+										<td>Process</td>
+										<td>:</td>
+										<td>
+											<div class="label" style="font-weight: bold;"> {!! $history->history_invitation_process !!}</div>
+                                        </td>
+									</tr>
+
+									<tr>
+										<td>Status</td>
+										<td>:</td>
+										<td>
+											<div class="label" style="font-weight: bold;">{!! $history->history_result !!}</div>
+                                        </td>
+									</tr>
+									<tr>
+										<td colspan="8">
+											@php 
+											  	if(empty($history->history_confirmation)):
+											  	@endphp
+											  	<div>
+												  	<button class="btn btn-success"	type="button" onclick="processConfirmation('ATTENDING','{{$userinfo['candidate_id']}}','{{$history->history_process_id}}')" > Attending </button>
+												  	<button class="btn btn-danger"  type="button" onclick="processConfirmation('NOT ATTENDING','{{$userinfo['candidate_id']}}','{{$history->history_process_id}}')">	 Not Attending </button>
+												  	<button class="btn btn-warning"	type="button" onclick="processConfirmation('RESCHEDULE','{{$userinfo['candidate_id']}}','{{$history->history_process_id}}')"> Re-Schedule </button>
+											  	</div>
+											  	@php
+											  		endif
+											  	@endphp
+										</td>
+									</tr>
+									<tr>
+	                  	 				<td colspan="7"><hr></td>
+	                  	 			</tr>
+
+								@endforeach
+							</table>
+
+
+						  </div>
+						  
+
+					</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@endsection
+
+@section('js')
+    @include('frontend.form_candidate.js_form_candidate')
+@endsection
+

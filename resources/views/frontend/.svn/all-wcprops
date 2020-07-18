@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/Puninar-Repository/!svn/ver/4442/WEB/erec/resources/views/frontend
+END
+formForgotPassword.blade.php
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/Puninar-Repository/!svn/ver/1037/WEB/erec/resources/views/frontend/formForgotPassword.blade.php
+END
+search_user_fptk.blade.php
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/Puninar-Repository/!svn/ver/2466/WEB/erec/resources/views/frontend/search_user_fptk.blade.php
+END
+getDescJob.blade.php
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/Puninar-Repository/!svn/ver/2375/WEB/erec/resources/views/frontend/getDescJob.blade.php
+END
+js_frontend.blade.php
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/Puninar-Repository/!svn/ver/4442/WEB/erec/resources/views/frontend/js_frontend.blade.php
+END
+index_job_list.blade.php
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/Puninar-Repository/!svn/ver/1686/WEB/erec/resources/views/frontend/index_job_list.blade.php
+END
+qr_code.blade.php
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/Puninar-Repository/!svn/ver/1025/WEB/erec/resources/views/frontend/qr_code.blade.php
+END

@@ -1,0 +1,88 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8"/>
+    <title>appendGrid</title>
+<link rel="stylesheet" type="text/css" href="jquery-ui.structure.min.css"/>
+<link rel="stylesheet" type="text/css" href="jquery-ui.theme.min.css"/>
+<link rel="stylesheet" type="text/css" href="jquery.appendGrid-1.6.2.css"/>
+
+<script type="text/javascript" src="jquery-1.11.1.min.js"></script>
+<script type="text/javascript" src="jquery-ui-1.11.1.min.js"></script>
+<script type="text/javascript" src="jquery.appendGrid-1.6.2.js"></script>
+
+  </head>
+  <body>
+  <script id="jsSource" type="text/javascript">
+$(function () {
+    // Initialize appendGrid
+    $('#tblAppendGrid').appendGrid('init', {
+        caption: 'My CD Collections',
+        captionTooltip: 'This is my CD collection list!',
+        initRows: 1,
+        columns: [
+            {
+                name: 'Album', display: 'Album', type: 'text', ctrlAttr: { maxlength: 100 },
+                // Make the column resizable
+                resizable: true, ctrlCss: { width: '100%' }, displayCss: { 'min-width': '160px' },
+                // Customize UI tooltip
+                displayTooltip: { items: 'td', content: 'You can resize this column!' }
+            },
+            { name: 'Artist', display: 'Artist', type: 'ui-autocomplete', ctrlAttr: { maxlength: 100, title: 'Please fill in the Artist name!!' }, ctrlCss: { width: '100px' }, uiTooltip: { show: true}, uiOption: { source: ['Rasis 1', 'Rasis 2', 'Rasis 3', 'Rasis 4', 'Rasis 5', 'Rasis 6']} },
+            { name: 'Year', display: 'Year', type: 'ui-spinner', ctrlAttr: { maxlength: 4 }, ctrlCss: { width: '40px' }, uiOption: { min: 2000, max: new Date().getFullYear()} },
+            { name: 'Origin', display: 'Origin', type: 'ui-autocomplete', uiOption: { source: ['Hong Kong', 'Taiwan', 'Japan', 'Korea', 'US', 'Others']} },
+            { name: 'StockIn', display: 'Stock In', type: 'ui-datepicker', ctrlAttr: { maxlength: 10 }, ctrlCss: { width: '80px' }, uiOption: { dateFormat: 'yy/mm/dd'} },
+            { name: 'Price', display: 'Price', type: 'text', ctrlAttr: { maxlength: 10 }, ctrlCss: { width: '50px', 'text-align': 'right' }, value: 0 }
+        ],
+        initData: [
+            { 'Album': 'Dearest', 'Artist': 'Theresa Fu', 'Year': '2009', 'Origin': 'Hong Kong', 'StockIn': '2011/01/30', 'Price': 168.9 },
+            { 'Album': 'To be Free', 'Artist': 'Arashi', 'Year': '2010', 'Origin': 'Japan', 'StockIn': '2011/02/26', 'Price': 152.6 },
+            { 'Album': 'Count On Me', 'Artist': 'Show Luo', 'Year': '2012', 'Origin': 'Taiwan', 'StockIn': '2011/09/18', 'Price': 306.8 },
+            { 'Album': 'Wonder Party', 'Artist': 'Wonder Girls', 'Year': '2012', 'Origin': 'Korea', 'StockIn': '2013/01/14', 'Price': 108.6 },
+            { 'Album': 'Reflection', 'Artist': 'Kelly Chen', 'Year': '2013', 'Origin': 'Hong Kong', 'StockIn': '2013/02/16', 'Price': 138.2 }
+        ]
+    });
+});
+
+function showValues()
+{
+	 var TableData = new Array();
+
+	  $('#tblAppendGrid tbody tr').each(function(row, tr){
+		  TableData[row]={
+			  "label1" :$(tr).find('td:eq(0)').text()
+			  , "label2" : $(tr).find('td').eq(1).find('input').val()
+			  , "label3" : $(tr).find('td').eq(2).find('input').val()
+			  , "label4" : $(tr).find('td').eq(3).find('input').val()
+			  , "label5" : $(tr).find('td').eq(4).find('input').val()
+			  , "label6" : $(tr).find('td').eq(5).find('input').val()
+		  } 
+	  }); 
+
+		//TableData="{'data':"+TableData+"}";
+		//TableData.shift();  // first row will be empty - so remove
+	  console.log(TableData);  
+	  console.log(TableData[0]['label1']);
+	  console.log(TableData[0]['label2']);
+	  console.log(TableData[0]['label3']);
+	  console.log(TableData[0]['label4']);
+	  console.log(TableData[0]['label5']);
+	  console.log(TableData[0]['label6']);
+	  
+	  console.log(TableData[1]['label1']);
+	  console.log(TableData[1]['label2']);
+	  console.log(TableData[1]['label3']);
+	  console.log(TableData[1]['label4']);
+	  console.log(TableData[1]['label5']);
+	  console.log(TableData[1]['label6']);
+
+}
+  </script>
+  <form action="" method="post">
+<table id="tblAppendGrid">
+</table>
+  </form>
+  <br><br>
+  <button id="btnShowValues" onclick="showValues();">Show</button>
+  </body>
+</html>

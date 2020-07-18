@@ -1,0 +1,322 @@
+@extends('layouts.frontend')
+
+@section('content_frontend')
+@section('css')
+ <style type="text/css">
+  .panel-body .nav li{
+    background-color: #FEAB1F;
+  }
+  .panel-body .nav li a{
+    color:#fff;
+  }
+  .panel-body {
+    height: calc(100vh - 300px);
+    overflow-y: auto; 
+  }
+</style>
+@endsection
+<div class="col-md-12">
+  <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" style="margin-bottom: 20px;">
+    <ol class="carousel-indicators">
+      <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+      <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+      <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+      <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
+    </ol>
+    <div class="carousel-inner" role="listbox">
+      <div class="carousel-item active">
+        <img class="d-block img-fluid" src="{{asset('images/imageslide1.jpg')}}" alt="First slide"  >
+      </div>
+
+      <div class="carousel-item">
+        <img class="d-block img-fluid" src="{{asset('images/imageslide3.jpg')}}" alt="Third slide" >
+      </div>
+
+      <div class="carousel-item">
+        <img class="d-block img-fluid" src="{{asset('images/imageslide4.jpg')}}" alt="For slide" >
+      </div>
+
+      <div class="carousel-item">
+        <img class="d-block img-fluid" src="{{asset('images/warning_photo.jpeg')}}" alt="For slide" >
+      </div>
+    </div>
+    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
+  </div>
+  <!-- /.row -->
+@php
+  $search = isset($_GET['search_general']);
+
+  if($search)
+  {
+    $search = $_GET['search_general'];
+  }
+  else
+  {
+    $search = '';
+  }
+@endphp
+
+<div class="row">
+    <div class="col-4">
+        <h3 style="font-weight: bold;" class="float-left"><span style="color:#FEAB1F">Career</span> Vacancies</h3>
+    </div> 
+    <div class="col-md-4"></div>
+    <div class="col-4">
+          <form action="{{route('frontend.index')}}" class="row" method="GET" style="margin-right: 2px;">
+             <div class="input-group">
+                  <input type="text" class="form-control" name="search_general" placeholder="Search Job" aria-label="Recipient's username" aria-describedby="basic-addon2" value="{{$search}}">
+                  <div class="input-group-append">
+                    <button class="btn btn-primary" type="submit">Search</button>
+                  </div>
+                </div>
+          </form>
+    </div>
+    <br><br>    
+</div>
+  @foreach($job  as $key => $val)
+    <main class="my-3">
+        <div class="card">
+          <div class="card-body">      
+              @if($process == 'REGISTRATION' || empty($sess))
+                <h5 class="card-title" style="font-weight: bold;"><a class="color-pun" style="text-decoration: none" href="javascript:void(0)" onclick="applyNow()">{{strtoupper($val->position_name)}}</a></h5>
+                <p class="sub-job-title">Work Location : {{$val->work_location}}</p>
+                <p class="sub-job-title">Work System : {{$val->work_system}}</p>
+                {{-- <hr style="border: 1px solid #9b9b9b"> --}}
+              @elseif(!empty($sess) || $process != 'REGISTRATION')
+              @php
+                  $date_exp = 0;
+                  if(!empty($candidate))
+                  {
+                      if($candidate->result == 'FAILED')
+                      {
+                        $tgl = (!empty($candidate)) ? strtotime($candidate->received_date) : "0";  
+                        $date_exp = date('Y-m-d', strtotime('+2 years',$tgl));    
+                      }
+                      else
+                      {
+                        $date_exp = 0;
+                      }
+                  }
+                @endphp
+                <input type="hidden" name="job_fptk" value="{{(!empty($job_ready)) ? "$job_ready" : "" }}">
+                <input type="hidden" name="position_name" value="{{(!empty($list_job)) ? "$list_job->position_name" : "" }}">
+                <input type="hidden" name="result" value="{{(!empty($candidate)) ? "$candidate->result" : "" }}">
+                <input type="hidden" name="process" value="{{(!empty($candidate)) ? "$candidate->process" : "" }}">
+                <input type="hidden" name="received_date" value="{{(!empty($candidate)) ? "$candidate->received_date" : "" }}">
+                <input type="hidden" name="date_now" value="{{ strtotime(date('Y-m-d')) }}">
+                <input type="hidden" name="exp_date" value="{{ strtotime($date_exp)}}">
+                <h5 class="card-title color-pun" style="font-weight: bold;">{{strtoupper($val->position_name)}}</h5>
+                <p class="sub-job-title">Work Location : {{$val->work_location}}</p>
+                <p class="sub-job-title">Work System : {{$val->work_system}}</p>
+                {{-- <hr style="border: 1px solid #9b9b9b"> --}}
+                <br>
+                <h5>Description</h5>
+                @php
+                  $description = html_entity_decode($val->description);
+                  echo $description;
+                @endphp
+                <h5>Requirements</h5>
+                  @php
+                  $requirement = html_entity_decode($val->requirement);
+                  echo $requirement;
+                  @endphp
+                
+                <h5>Benefits</h5>
+                @php
+                  $benefit = html_entity_decode($val->benefit);
+                  echo $benefit;
+                @endphp
+
+                <button class="btn btn-warning" style="color:#fff"  
+                   onclick="applyNow('{{$val->job_fptk_id }}','{{$val->position_name }}')"> 
+                  Apply Now
+                </button>
+              @endif
+        </div>
+      </div>
+    </main>
+  @endforeach
+  {{ $job->links() }}
+</div>
+@endsection
+
+@section('js')
+
+
+<!-- Modal Login -->
+<div class="modal fade" id="modalLoginFront" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="false" data-backdrop="static">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle" style="font-weight: bold">Login Form</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"  onclick="closeModalLogin()">
+            <span aria-hidden="true"  >&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+           <form class="form-signin" id="form-signin">
+              <div class="form-label-group">
+                <label for="inputEmail">Email address</label>
+                <input type="text" class="form-control" name="email" placeholder="Email address" required autofocus>
+                <span class="invalid-feedback" role="alert"></span>
+              </div>
+
+              <div class="form-label-group">
+                <label for="inputPassword">Password</label>
+                <input type="password"  class="form-control" name="password" placeholder="Password" required>
+                <span class="invalid-feedback" role="alert"></span>
+              </div>
+
+              <div class="custom-control custom-checkbox mb-3" style="padding-left:0;">
+              <span  class="pull-left my-2"> Don't have an account, &nbsp;  </span>  <a href="#" onclick="notHaveAccount()"  class="pull-left my-2"> Register here </a>
+                <a href="javascript:void(0)" class="pull-right  my-2" onclick="modalForgotPassword()"> Forgot Password  </a>
+              </div> 
+
+              <div class="clearfix">
+                <button type="button"  class="btn btn-default pull-left closeBtnLogin" onclick="closeModalLogin()">Cancel</button>
+                <button type="submit"   class="btn btn-success  pull-right loginBtn saveBtnLogin">Login</button>
+              </div>
+           </form>
+        </div>
+      </div>
+    </div>
+</div>
+
+
+
+
+<!-- Modal Login -->
+<div class="modal fade" id="modalWarning" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="false" data-backdrop="static">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header" style="border-bottom: none;-webkit-box-shadow:0 0 0 #fff">
+          <h3 class="modal-title" id="exampleModalLongTitle"> PERHATIAN </h3>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"  onclick="closeWarning()">
+            <span aria-hidden="true"  >&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="table-responsive">
+           <img src="{{asset('images/warning_photo.jpeg')}}" width="465" height="500">
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
+
+<!-- Modal Forgot -->
+<div class="modal fade" id="modalForgotPassword" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="false" data-backdrop="static">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header" style="background-color: #FEAB1F;color:#fff">
+          <h5 class="modal-title" id="exampleModalLongTitle" style="font-weight: bold">Account Recovery</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"  onclick="closeModalForgotPassword()">
+            <span aria-hidden="true"  >&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+           <form class="form-forgot" id="form-forgot">
+              <div class="form-label-group">
+                <input type="text" class="form-control" name="email_forgot" placeholder="Input your email here" required autofocus>
+                <span class="invalid-feedback" role="alert"></span>
+              </div>
+              <br>
+              <br>
+              <div class="clearfix">
+                <button type="button"  class="btn btn-default pull-left closeBtnLogin" onclick="closeModalForgotPassword()">Cancel</button>
+                <button type="submit"   class="btn btn-success  pull-right loginBtn saveBtnLogin">Send</button>
+              </div>
+           </form>
+        </div>
+      </div>
+    </div>
+</div>
+
+<!-- Modal Registrasi -->
+
+<div class="modal fade" id="modalRegistration" tabindex="-1" role="dialog" aria-labelledby="groupModalCenterTitle" aria-hidden="false"  data-backdrop="static">
+  <div class="modal-dialog modal-dialog-centered  modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" style="text-align:center;font-weight: bold;">Registration Form</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="closeModalRegistration()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body"  style="background-color: #FBFBFB">
+        <div class="alert alert-danger" id="error-alert" style="display: none"></div>
+        
+          <form  id="form-registration">
+              <div class="form-group row">
+                <label for="staticEmail" class="col-sm-3 col-form-label">Name</label>
+                <div class="col-sm-9">
+                    <input type="text" id="inputName" name="name_holder"  class="form-control" placeholder="Name" required autofocus>
+                    <span class="invalid-feedback" role="alert"></span>
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="inputPassword" class="col-sm-3 col-form-label">Email</label>
+                <div class="col-sm-9">
+                    <input type="text" class="form-control" onchange="emailCheck()" name="email"  required placeholder="Email">
+                    <span class="invalid-feedback" role="alert"></span>
+                </div>
+              </div>
+
+              <div class="form-group row">
+                <label for="inputPassword" class="col-sm-3 col-form-label">Phone Number</label>
+                <div class="col-sm-9">
+                    <input type="text" class="form-control number_valid_char" maxlength="15" onchange="" name="phone_number"  required placeholder="Phone Number">
+                    <span class="invalid-feedback" role="alert"></span>
+                </div>
+              </div>
+
+
+              <div class="form-group row">
+                <label for="inputPassword" class="col-sm-3 col-form-label">Password</label>
+                <div class="col-sm-9">
+                  <input type="password"  class="form-control" name="password" required placeholder="Password">
+                  <span class="invalid-feedback" role="alert"></span>
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="inputPassword" class="col-sm-3 col-form-label">Confirm Password</label>
+                <div class="col-sm-9">
+                  <input type="password" id="inputConfirmPassword" class="form-control" required name="password_confirmation" placeholder="Confirm Password">
+                  <span class="invalid-feedback" role="alert"></span>
+                </div>
+              </div>
+
+              <div class="form-group row">
+                <label for="inputPassword" class="col-sm-3 col-form-label">Captcha</label>
+                <div class="col-sm-9">
+                  <div class="refreshCaptcha"> 
+                    {!! captcha_img('default') !!}
+                  </div> 
+                  <a href="javascript:void(0)" onclick="refreshCaptcha()">refresh captcha</a>
+                  <br>
+                  <input type="text" name="captcha" required="" class="form-control" placeholder="Input Captcha">
+                  <span class="invalid-feedback" role="alert"></span>
+                </div>
+              </div>
+
+           <!-- /form -->
+      </div><!-- / Modal Body -->
+      <div class="modal-footer" style="text-align: center">
+        <button type="button"  class="btn btn-default pull-left" id="closeBtnRegis"  onclick="closeModalRegistration()">Cancel</button>
+        <button type="submit"   class="btn btn-success  pull-right" id="saveBtnRegis"> Register</button>
+      </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+    @include('frontend.js_frontend')
+@endsection
+

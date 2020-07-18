@@ -1,0 +1,101 @@
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/Puninar-Repository/!svn/ver/208/WEB/erec/config
+END
+broadcasting.php
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/Puninar-Repository/!svn/ver/152/WEB/erec/config/broadcasting.php
+END
+excel.php
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/Puninar-Repository/!svn/ver/156/WEB/erec/config/excel.php
+END
+auth.php
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/Puninar-Repository/!svn/ver/152/WEB/erec/config/auth.php
+END
+cache.php
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/Puninar-Repository/!svn/ver/152/WEB/erec/config/cache.php
+END
+captcha.php
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/Puninar-Repository/!svn/ver/169/WEB/erec/config/captcha.php
+END
+database.php
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/Puninar-Repository/!svn/ver/152/WEB/erec/config/database.php
+END
+datatables.php
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/Puninar-Repository/!svn/ver/152/WEB/erec/config/datatables.php
+END
+filesystems.php
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/Puninar-Repository/!svn/ver/152/WEB/erec/config/filesystems.php
+END
+view.php
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/Puninar-Repository/!svn/ver/152/WEB/erec/config/view.php
+END
+app.php
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/Puninar-Repository/!svn/ver/169/WEB/erec/config/app.php
+END
+hashing.php
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/Puninar-Repository/!svn/ver/152/WEB/erec/config/hashing.php
+END
+mail.php
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/Puninar-Repository/!svn/ver/169/WEB/erec/config/mail.php
+END
+services.php
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/Puninar-Repository/!svn/ver/152/WEB/erec/config/services.php
+END
+session.php
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/Puninar-Repository/!svn/ver/152/WEB/erec/config/session.php
+END
+queue.php
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/Puninar-Repository/!svn/ver/152/WEB/erec/config/queue.php
+END
+logging.php
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/Puninar-Repository/!svn/ver/152/WEB/erec/config/logging.php
+END

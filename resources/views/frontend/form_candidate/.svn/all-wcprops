@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/Puninar-Repository/!svn/ver/3094/WEB/erec/resources/views/frontend/form_candidate
+END
+confirmation.blade.php
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/Puninar-Repository/!svn/ver/1131/WEB/erec/resources/views/frontend/form_candidate/confirmation.blade.php
+END
+js_form_candidate.blade.php
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/Puninar-Repository/!svn/ver/3094/WEB/erec/resources/views/frontend/form_candidate/js_form_candidate.blade.php
+END
+create_form_candidate.blade.php
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/Puninar-Repository/!svn/ver/1406/WEB/erec/resources/views/frontend/form_candidate/create_form_candidate.blade.php
+END

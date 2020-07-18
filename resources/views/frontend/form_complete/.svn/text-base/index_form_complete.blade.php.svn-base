@@ -1,0 +1,160 @@
+@extends('layouts.frontend')
+
+@section('content_frontend')
+@php
+  $userinfo = Session::get('userinfo'); 
+@endphp
+<style type="text/css">
+  
+</style>
+
+
+<div class="container   my-4">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header" style="background-color:#fff">
+                    <i class="fa fa-list"></i> COMPLETE FORM 
+                </div>
+                <div class="card-body">
+                    <div class="col-12" style="">
+                      <div id="alertValid">
+                            @if(
+                                ($npwp != "") || ($family != "") || ($emergency_contact != "") || ($education_background != "") || ($skill != "") || ($language_skill != "") || ($assess_can !="") 
+                              )
+                        <div class="alert alert-danger" role="alert">
+                               Please complete data
+                                 <strong>  
+
+                                    @if ( ($family == 'Family Information, ' ) || ($emergency_contact == 'Emergency Contact, ' ))
+                                        {{"Family Information, "}}
+                                    @endif
+
+                                    @if ( $education_background == 'Educational Background, ')
+                                        {{"Educational Background,  "}}
+                                    @endif
+
+                                    @if ( ($skill == 'Skill, ')  || ($language_skill == 'Language Skill, ') )
+                                          {{"Skill,  "}}
+                                    @endif
+                                    @if ($skill == 'NPWP, ')
+                                          {{"Personal Information,  "}} 
+                                    @endif
+                                    
+                                    @if ($assess_can == 'Assessment, ')
+                                          {{"Assessment,  "}}
+                                    @endif
+                                 </strong>  
+                               for  next step . 
+                        </div>
+                        @endif
+                      </div>
+
+
+                      <div class="row">
+                        <div class="col-3">
+                            <div class="card card-hover">
+                                <div class="box bg-biru-muda text-center" id="personalInfo"  onclick="personalInfo()" style="cursor: pointer;">
+                                    <i class="fa fa-user fa-2x text-white"></i><br>
+                                    <h6 class="text-white">Personal Information</h6>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="col-3">
+                            <div class="card card-hover">
+                                <div class="box bg-hijau text-center" id="familyInfo"   onclick="familyInfo()" style="cursor: pointer;">
+                                    <i class="fa fa-users fa-2x text-white"></i><br>
+                                    <h6  class="text-white">Family Information</h6>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="col-3">
+                            <div class="card card-hover">
+                                <div class="box bg-kuning text-center" id="eduBack" onclick="eduBack()"  style="cursor: pointer;">
+                                    <i class="fa fa-graduation-cap fa-2x text-white"></i><br>
+                                    <h6 class="text-white">Educational Background</h6>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="col-3">
+                            <div class="card card-hover">
+                                <div class="box bg-merah text-center" id="courseInfo"  onclick="courseInfo()" style="cursor: pointer;">
+                                    <i class="fa fa-tasks fa-2x text-white"></i><br>
+                                    <h6 class="text-white">Course Information</h6>
+                                </div>
+                            </div>
+                        </div>
+
+                      </div><!-- CARD TOP --->
+
+                      <div class="row" style="margin-top:13px"> 
+
+                        <div class="col-3">
+                          <div class="card card-hover">
+                              <div class="box bg-biru text-center" id="langSkill" onclick="langSkill()"  style="cursor: pointer;">
+                                  <i class="fa fa-trophy fa-2x text-white"></i><br>
+                                  <h6 class="text-white">Skill</h6>
+                              </div>
+                          </div>
+                        </div>
+                        
+
+                        <div class="col-3">
+                          <div class="card card-hover">
+                              <div class="box bg-merah text-center" id="orgInfo"  onclick="orgInfo()" style="cursor: pointer;">
+                                  <i class="fa fa-address-book fa-2x text-white"></i><br>
+                                  <h6 class="text-white">Organization</h6>
+                              </div>
+                          </div>
+                        </div>
+
+
+
+                        <div class="col-3">
+                          <div class="card card-hover">
+                              <div class="box bg-biru-muda text-center"  id="jobExp" onclick="jobExp()" style="cursor: pointer;">
+                                  <i class="fa fa-building fa-2x text-white"></i><br>
+                                  <h6 class="text-white">Job Experience</h6>
+                              </div>
+                          </div>
+                        </div>
+
+
+
+                        <div class="col-3">
+                          <div class="card card-hover">
+                              <div class="box bg-hijau text-center" id="other"  onclick="other()"  style="cursor: pointer;">
+                                  <i class="fa fa-pencil fa-2x text-white"></i><br>
+                                  <h6 class="text-white">Assessment</h6>
+                              </div>
+                          </div>
+                        </div>
+
+                      </div><!-- CARD BOTTOM --->
+                    </div><!-- END COL 10 -->
+
+
+
+                    <br><br><br>
+                    <div id="content-candidate">
+                    </div>
+
+
+                  <br><br>
+        
+                </div>  <!-- END CARD BODY -->
+            </div><!-- END CARD -->
+        </div>
+    </div>
+</div>
+@endsection
+
+@section('js')
+    @include('frontend.form_complete.js_form_complete')
+@endsection

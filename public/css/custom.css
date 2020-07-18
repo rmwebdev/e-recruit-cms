@@ -1,0 +1,525 @@
+
+
+#form-login{
+  background: url("/images/puninar_dna.jpg") no-repeat;
+  background-size: 1500px 1200px;
+  background-position:center;
+
+}
+
+
+.span-mandatory{
+    font-weight:bold;
+    color:#D50000;
+    font-size:12px;
+}
+
+.dt-buttons{
+	margin-bottom: 10px;
+}
+.span-mandatory{
+	color:red;
+}
+
+.button-can-final{
+	padding:20px;
+	color:#fff;
+	cursor:pointer;
+	width:190px;
+	height: 100px;
+}
+.col-can-final{
+	flex: 0 0 20%;
+}
+.st-rec-process{
+    text-align: center;
+    color:#fff;
+    cursor: pointer;
+}
+
+.loading{
+  position:fixed;
+  top:40%;
+  right:40%;
+  background-color:#FFF;
+  -moz-border-radius: 5px; 
+  -webkit-border-radius: 5px;
+  z-index:3000;
+
+}
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0,0,0,0.5);
+  z-index: 10;
+}
+
+.font-16{
+  font-size: 16px;
+}
+
+.font-14{
+  font-size: 14px;
+}
+
+.font-12{
+  font-size: 12px;
+}
+
+.font-18{
+  font-size: 18px;
+}
+
+.font-20{
+  font-size: 20px;
+}
+
+.font-abu{
+  color:#4b4b4b;
+}
+
+
+.bg-abu-putih{
+  background-color :#f2f2f2
+}
+
+
+.page-link {
+    position: relative;
+    display: block;
+    padding: 0.5rem 0.75rem;
+    margin-left: -1px;
+    line-height: 1.25;
+    color: #000;
+     background-color: #e5e5e5; 
+    border: 1px solid #dee2e6;
+  }
+
+  .page-item.active .page-link {
+    z-index: 1;
+    color: #fff;
+    background-color: #fff;
+    color:#000;
+    border-color: #cccccc;
+  }
+
+
+/*
+.active_card{
+    background-color: #29166F !important;
+    -webkit-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+    box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+}*/
+
+.active_card{
+    background-color: #2f318b !important;
+    opacity: 1 !important;
+    -webkit-box-shadow: 5px 3px 5px 0px rgba(0,0,0,1);
+    -moz-box-shadow: 5px 3px 5px 0px rgba(0,0,0,1);
+    box-shadow: 5px 3px 5px 0px rgba(0,0,0,1);
+}
+
+
+.bg-merah{
+  background-color:#dc3545;
+}
+.bg-biru{
+  background-color:#2f318b;
+  opacity: 0.75;
+}
+.bg-kuning{
+  background-color: #ffc107;
+  opacity: 0.75;
+}
+.bg-hijau{
+  background-color: #28a745;
+  opacity: 0.75;
+
+}
+.bg-biru-muda{
+  background-color: #17a2b8;
+  opacity: 0.75;
+
+}
+.bg-abu{
+  background: #909090;
+  opacity: 0.75;
+
+}
+.bg-abu-muda{
+  background: #e5e5e5;
+/*  opacity: 0.75;
+*/
+}
+
+.color-pun-biru{
+    color:#2f318b;
+}
+
+.bg-ungu{
+  background-color: #2f318b;
+}
+
+.color-ungu{
+  color: #2f318b; 
+}
+
+.color-white{
+     color:#fff;
+}
+
+
+.notification {
+/*  background-color: #3490DC;
+*/  color: white;
+  text-decoration: none;
+  padding: 5px 16px;
+  position: relative;
+  display: inline-block;
+  border-radius: 2px;
+}
+/*
+.notification:hover {
+  background: #2DADDC;
+  text-decoration: none;
+  color:#fff;
+}
+*/
+.notification .badge {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  padding: 10px 12px;
+  border-radius: 50%;
+  background-color: #e44646;
+  color: white;
+}
+/*
+.box{
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-radius: 5px;
+}
+*/
+
+
+.box{
+  border-radius: 5px;
+  /*padding: 20px;*/
+  height: 74px;
+}
+.font-weight-500{
+  font-weight: 500;
+}
+
+.font-weight-900{
+  font-weight: 900 ;
+}
+
+.warna-pudar-05{
+  opacity: 0.5;
+}
+
+.warna-pudar-075{
+  opacity: 0.75;
+}
+
+.card-hover h5,h6{
+  font-weight: 900 !important;
+  color:white;
+  font-size: 14px;
+}
+
+.bg-ungu-muda{
+  background-color: #e5e5e5;
+}
+
+.navbar-light .navbar-nav .show > .nav-link, .navbar-light .navbar-nav .active > .nav-link, .navbar-light .navbar-nav .nav-link.show, .navbar-light .navbar-nav 
+.nav-link.active{
+    color:#feab1f;
+    font-weight: 900;
+   /* background-color:#E7E7E7;
+    border-radius: 5px;*/
+}
+.navbar-light .navbar-nav .nav-link:hover, .navbar-light .navbar-nav .nav-link:focus{
+      color:#feab1f;
+}
+.navbar-light .navbar-brand{
+    color:#fff;
+}
+.navbar-light .navbar-nav .nav-link{ 
+    color:#fff;
+    /*font-weight: 900;*/
+}
+
+.table-striped tbody tr:nth-of-type(odd){
+          background-color: #F0F8FF; 
+          color:#000;
+}
+
+.select2-container--default .select2-selection--single .select2-selection__arrow{
+    height: 25px;
+    position: absolute;
+    top: 1px;
+    right: 34px;
+    width: 20px;
+  }
+
+  .select2-container .select2-selection--single{
+    box-sizing: border-box;
+    cursor: pointer;
+    display: block;
+    height: 35px;
+    width: 200px;
+    -webkit-user-select: none;
+  }
+  .select2-container{
+    font-size: 15px;
+  }
+
+
+
+.edu_university_select2 .select2-container--default .select2-selection--single .select2-selection__arrow{
+    height: 25px;
+    position: absolute;
+    top: 1px;
+    right: 10px;
+    width: 20px;
+  }
+
+  .edu_university_select2 .select2-container .select2-selection--single{
+    box-sizing: border-box;
+    cursor: pointer;
+    display: block;
+    height: 35px;
+    width: 300px;
+    -webkit-user-select: none;
+  }
+.edu_university_select2 .select2-container{
+    font-size: 15px;
+}
+
+
+.city_select2 .select2-container--default .select2-selection--single .select2-selection__arrow{
+    height: 25px;
+    position: absolute;
+    top: 1px;
+    right: 10px;
+    width: 20px;
+  }
+
+  .city_select2 .select2-container .select2-selection--single{
+    box-sizing: border-box;
+    cursor: pointer;
+    display: block;
+    height: 35px;
+    width: 330px;
+    -webkit-user-select: none;
+  }
+.city_select2 .select2-container{
+    font-size: 15px;
+}
+
+.city_select2_complete .select2-container--default .select2-selection--single .select2-selection__arrow{
+    height: 25px;
+    position: absolute;
+    top: 1px;
+    right: 10px;
+    width: 20px;
+  }
+
+  .city_select2_complete .select2-container .select2-selection--single{
+    box-sizing: border-box;
+    cursor: pointer;
+    display: block;
+    height: 35px;
+    width: 238px;
+    -webkit-user-select: none;
+  }
+.city_select2_complete .select2-container{
+    font-size: 15px;
+}
+
+
+
+@media screen and (max-width:480px){      
+    .card-hover h5, h6{
+      font-size: 12px;
+    }
+    .col-3{
+      max-width: none;
+      padding:5px;
+      flex: none;
+    }
+    .col-2{
+      max-width: none;
+      padding:5px;
+      flex: none;
+    }
+    .box{
+      padding:10;
+    }
+    h3 .modal-title{
+      text-align: center;
+    }
+
+    .loading{
+        right:20%;
+    }
+
+    .col-4 {
+     flex: 0; 
+     max-width: 0; 
+   }
+}
+@media (min-width: 768px) {
+        .modal-dialog {
+          width: 1000px; /* New width for default modal */
+        }
+        .modal-sm {
+          width: 350px; /* New width for small modal */
+        }
+    }
+    
+@media (min-width: 992px) {
+  .modal-lg {
+    max-width: 1000px;
+  }
+}
+
+
+
+
+.active_other{
+ cursor: pointer;background: url('/images/assessment-on.png') no-repeat;
+ height: 110px;width: 220px;
+  -webkit-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+  -moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+  box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+}
+
+.no_active_other{
+cursor: pointer;background: url('/images/assessment-off.png') no-repeat;height: 110px;width: 220px
+}
+
+
+
+.active_job_exp{
+ cursor: pointer;background: url('/images/job-experience-on.png') no-repeat;
+ height: 110px;width: 220px;
+  -webkit-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+  -moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+  box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+}
+
+.no_active_job_exp{
+cursor: pointer;background: url('/images/job-experience-off.png') no-repeat;height: 110px;width: 220px
+}
+
+
+
+
+.active_org_info{
+ cursor: pointer;background: url('/images/organization-on.png') no-repeat;
+ height: 110px;width: 220px;
+  -webkit-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+  -moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+  box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+}
+
+.no_active_org_info{
+cursor: pointer;background: url('/images/organization-off.png') no-repeat;height: 110px;width: 220px
+}
+
+
+
+.active_lang_skill{
+  cursor: pointer;background: url('/images/skill-on.png') no-repeat;height: 110px;width: 220px;
+
+  -webkit-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+  -moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+  box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+}
+
+.no_active_lang_skill{
+  cursor: pointer;background: url('/images/skill-off.png') no-repeat;height: 110px;width: 220px;
+
+}
+
+
+.active_course_info{
+  cursor: pointer;
+  background: url('/images/course-information-on.png') no-repeat;
+  height: 110px;
+  width: 220px;
+  -webkit-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+  -moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+  box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+}
+
+.no_active_course_info{
+  cursor: pointer;
+  background: url('/images/course-information-off.png') no-repeat;
+  height: 110px;
+  width: 220px
+}
+
+
+
+.no_active_educational_background{
+  cursor: pointer;
+  background: url('/images/educational-background-off.png') no-repeat;
+  height: 110px;
+  width: 220px;
+}
+
+.active_educational_background{
+  cursor: pointer;
+  background: url('/images/educational-background-on.png') no-repeat;
+  height: 110px;
+  width: 220px; 
+  -webkit-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+  -moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+  box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+}
+
+.no_active_card_personal{
+  cursor: pointer;
+  background: url('/images/personal-information-off.png') no-repeat;
+  height: 110px;
+  width: 220px
+}
+
+.active_card_personal{
+  cursor: pointer;
+  background: url('/images/personal-information-on.png') no-repeat;
+  height: 110px;
+  width: 220px;
+  -webkit-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+  -moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+  box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+}
+
+.no_active_card_family{
+  cursor: pointer;
+  background: url('/images/family-information-off.png') no-repeat;
+  height: 110px;
+  width: 220px;
+
+}
+
+.active_card_family{
+  cursor: pointer;
+  background: url('/images/family-information-on.png') no-repeat;
+  height: 110px;
+  width: 220px;
+  -webkit-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+  -moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+  box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+}

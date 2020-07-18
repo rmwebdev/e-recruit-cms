@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- CSRF Token -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
+    <title>{{ config('app.name', 'Laravel') }}</title>
+
+    <!-- Scripts -->
+
+    <!-- Fonts -->
+
+    <link href="{{ asset('frontend/vendor/bootstrap/css/bootstrap.css') }}" rel="stylesheet">
+    <link href="{{ asset('vendor/select2/css/select2.css') }}" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Cabin" rel="stylesheet">
+
+    
+
+     <!-- Font awesome -->
+    <link rel="stylesheet" href="{{ asset('vendor/font-awesome-4.7.0/css/font-awesome.css') }}">
+
+    <!-- Datatable  -->
+    <link rel="stylesheet" href="{{ asset('vendor/jquery/jquery.dataTables.min.css') }}">
+
+    <!-- sweet alert --->
+    <link href="{{ asset('vendor/sweetalert/sweetalert.css')}}" rel="stylesheet" type="text/css"/>
+    <link href="{{ asset('frontend/css/custom.css') }}" rel="stylesheet">
+   
+    <!-- jQuery 3 -->
+    <script src="{{ asset('vendor/jquery/jquery.min.js') }}"></script>
+    <script src="{{ asset('vendor/select2/js/select2.js') }}"></script>
+    
+    <!-- jQuery UI 1.11.4 -->
+    <script src="{{ asset('vendor/jquery-ui/jquery-ui.min.js') }}"></script>
+
+    <!-- Datepicker 4 --->
+    <link rel="stylesheet" href="{{ asset('vendor/datepicker4/css/gijgo.css') }}">
+    <script src="{{ asset('vendor/datepicker4/gijgo.js') }}"></script>
+    <script src="{{ asset('vendor/sweetalert/sweetalert.min.js')}}"></script>
+
+   <style type="text/css">
+   		body{
+   			font-family: 'Cabin', sans-serif;
+   		}
+   		.fixed-top{    
+    		height: 300px;
+    		z-index: 0;
+   		}
+   		.container{
+   			max-width: 960px;
+   		}
+   		ul{
+   			list-style-type: none;
+   			font-size: 20px;
+   			margin-top: 10px;
+   			margin-left: 20px;
+   			margin-right: 55px;
+   		}
+   </style>
+
+</head>
+<body style="background-color: #F8F9FA"> 
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-md fixed-top" style="background-color: #FEAB1F">
+      <div class="container">
+        <button class="navbar-toggler" type="button" style="border-color:#000" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="fa fa-bars"></span>
+        </button>
+
+      </div>
+    </nav>
+
+    <!-- Page Content -->
+    <div class="container">
+
+      <div class="row">
+      
+		<div class="col-md-12  shadow-lg rounded" style="background-color: #fff;">
+			
+			<div style="margin-top: 30px;margin-bottom: 10px" align="center">
+				<a class="navbar-brand" href="#"><img src="{{asset('images/logo.png')}}" height="50"></a>
+			</div>
+			<div class="row">
+				<div class="col-md-6">
+					<div align="center">
+		                <img src="data:image/png;base64, <?php echo  base64_encode( QrCode::format('png')->size(300)->generate(url('action-scan-qr-code?param1='.$id.'&param2='.$ktp_no)) ) ?> ">
+		            </div>
+				</div>
+
+				<div class="col-md-6" style="margin-top:10px;" align="center">
+					<table>
+						<tr>
+							<td> NAME </td>
+							<td> : </td>
+							<td>{{ strtoupper($name)}}</td>
+						</tr>
+						<tr>
+							<td> PROCESS </td>
+							<td> : </td>
+							<td>{{ ($process == "CALLED") ? "INVITATION" : "" }}</td>
+						</tr>
+
+						<tr>
+							<td> INVITATION </td>
+							<td> : </td>
+							<td>{{ strtoupper($invitation_process)}}</td>
+						</tr>
+						<tr>
+							<td> POSITION </td>
+							<td> : </td>
+							<td>{{ strtoupper($position_name)}}</td>
+						</tr>
+
+						<tr>
+							<td> SCHEDULE </td>
+							<td> : </td>
+							<td>{{ strtoupper(tanggal_indo_lengkap(date('Y-m-d', strtotime($date_process)))) }}</td>
+						</tr>
+
+						<tr>
+							<td> VALID UNTIL </td>
+							<td> : </td>
+							<td> {{ strtoupper(tanggal_indo_lengkap($until)) }}</td>
+						</tr>
+					</table>
+
+				</div>	
+
+				
+			</div>
+			
+		</div>
+      </div>
+        <!-- /.col-md-8 -->
+
+    </div>
+      <!-- /.row -->
+
+
+    
+
+
+
+
+    <!-- EXPORT DATA -->
+    <script src="{{ asset('vendor/jquery/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset('vendor/jquery/numeric.js') }}"></script>
+    <script src="{{ asset('vendor/bootstrap-4.0.0/js/bootstrap.js') }}"></script>
+
+    <!-- EXPORT DATA -->
+    <script src="{{ asset('vendor/jquery/dataTables.buttons.min.js') }}"></script>
+    <script src="{{ asset('vendor/jquery/buttons.flash.min.js') }}"></script>
+    <script src="{{ asset('vendor/jquery/jszip.min.js') }}"></script>
+    <script src="{{ asset('vendor/jquery/pdfmake.min.js') }}"></script>
+    <script src="{{ asset('vendor/jquery/vfs_fonts.js') }}"></script>
+    <script src="{{ asset('vendor/jquery/buttons.html5.min.js') }}"></script>
+    <script src="{{ asset('vendor/jquery/buttons.print.min.js') }}"></script>
+    <script src="{{ asset('frontend/js/custom.js') }}"></script>
+    @yield('js')
+
+</body>
+
+
+</html>
