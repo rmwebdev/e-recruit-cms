@@ -139,6 +139,34 @@ class CandidateFinalController extends Controller
             'file_2' => $file_2,
         ], $messages);
 
+        if($request->religion == 'Other')
+        {
+            $this->validate($request, [
+              'other_religion'    => 'required',
+          ]);
+        }
+
+        if($request->edu_major == 'Other')
+        {
+            $this->validate($request, [
+              'other_major'    => 'required',
+          ]);
+        }
+
+        if($request->edu_university == 'Other')
+        {
+            $this->validate($request, [
+              'other_school'    => 'required',
+          ]);
+        }
+
+        if($request->city == 'Other')
+        {
+            $this->validate($request, [
+              'other_city'    => 'required',
+          ]);
+        }
+
         if($validator->fails())
         {
             return response()->json( array('errors' => $validator->errors()->toArray()),422);
@@ -161,7 +189,7 @@ class CandidateFinalController extends Controller
         $fileFoto = (empty($request->file('file_1')) ? $request->file_1_edit : $fileNamePhoto );
         $fileCV = (empty($request->file('file_2')) ? $request->file_2_edit : $fileNameCv );
 
-
+        $salaryEncrypt = DB::select( DB::raw("SELECT pgp_sym_encrypt::text FROM pgp_sym_encrypt('".$request['exp_salary_existing']."'::text, 'AES_KEY'::text)") );
 
     	$candidate = Candidate::find($request->candidate_id);
         $candidate->name_holder = $request->name_holder;
@@ -170,6 +198,11 @@ class CandidateFinalController extends Controller
         $candidate->job_fptk_id = $request->job;
         $candidate->place_of_birth = $request->place_of_birth;
         $candidate->religion = $request->religion;
+        $candidate->other_religion = $request->other_religion;
+        $candidate->other_major = $request->other_major;
+        $candidate->other_school = $request->other_school;
+        $candidate->other_city = $request->other_city;
+
         $candidate->marital_status = $request->marital_status;
         $candidate->address = $request->address;
         $candidate->city = $request->city;
@@ -194,7 +227,7 @@ class CandidateFinalController extends Controller
         $candidate->exp_start_year=(int)$request['exp_start_year'];
         $candidate->exp_end_year=(int)$request['exp_end_year'];
         $candidate->exp_total=(int)$request['exp_total'];
-        $candidate->exp_salary_existing=$request['exp_salary_existing'];
+        $candidate->exp_salary_existing=$salaryEncrypt[0]->pgp_sym_encrypt;
         $candidate->job_desc=trim($request['job_desc']);
         $candidate->received_date = date('Y-m-d');
         $candidate->npwp = $request->npwp;
@@ -272,6 +305,7 @@ class CandidateFinalController extends Controller
             File::delete($destinationPath.'/'.$request->file_2_edit);
             $fileNameCv = uploadFile($request->file('file_2'),$destinationPath);
         }
+        $salaryEncrypt = DB::select( DB::raw("SELECT pgp_sym_encrypt::text FROM pgp_sym_encrypt('".$request['exp_salary_existing']."'::text, 'AES_KEY'::text)") );
 
         $candidate = new Candidate;
         $candidate->name_holder = $request->name_holder;
@@ -304,7 +338,7 @@ class CandidateFinalController extends Controller
         $candidate->exp_start_year=(int)$request['exp_start_year'];
         $candidate->exp_end_year=(int)$request['exp_end_year'];
         $candidate->exp_total=(int)$request['exp_total'];
-        $candidate->exp_salary_existing=$request['exp_salary_existing'];
+        $candidate->exp_salary_existing=$salaryEncrypt[0]->pgp_sym_encrypt;
         $candidate->job_desc=trim($request['job_desc']);
         $candidate->received_date = date('Y-m-d');
         $candidate->npwp = $request->npwp;

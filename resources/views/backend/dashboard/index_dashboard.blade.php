@@ -621,7 +621,7 @@ Highcharts.chart('pieSource', {
     },
     colors:color_chart,
     title: {
-        text: 'HIRED',
+        text: 'HIREDTELO',
             style: {
                 fontWeight: 'bold',
                 fontSize:'18px',

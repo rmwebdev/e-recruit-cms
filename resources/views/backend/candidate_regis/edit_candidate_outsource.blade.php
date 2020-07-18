@@ -97,7 +97,7 @@
 	</div>
 </div>
 
-<div class="container mt-1" id="candidate_entry_data"  style="max-width: 1203px">
+<div class="container mt-1" id="candidate_entry_data"  style="width: 100%;">
     <div class="row">
         <div class="col-md-12">
             <div class="card">
@@ -266,7 +266,7 @@
 	                        <div class="col-sm-6">
 	                          <div class="form-group">
 	                            <label class="control-label  font-14"> SALARY  <span class="span-mandatory">*</span> </label>
-	                            <input class="form-control number_valid_char" type="text" name="salary"  id="salary" value="{{$get_data->salary}}">
+	                            <input class="form-control number_valid_char" type="text" name="salary"  id="salary" value="{{$salary->salary}}">
 	                            <i class="invalid-feedback" role="alert"></i>                                 
 	                          </div>
 	                        </div>
@@ -276,7 +276,7 @@
 	                        <div class="col-sm-6">
 	                          <div class="form-group">
 	                            <label class="control-label  font-14"> DESC BENEFIT  <span class="span-mandatory">*</span> </label>
-	                            <input class="form-control number_valid_char" type="text" name="desc_benefit"  id="desc_benefit" value="{{$get_data->job_fptk->desc_benefit}}">
+	                            <input class="form-control" type="text" name="desc_benefit"  id="desc_benefit" value="{{$get_data->job_fptk->desc_benefit}}">
 	                            <i class="invalid-feedback" role="alert"></i>                                 
 	                          </div>
 	                        </div>

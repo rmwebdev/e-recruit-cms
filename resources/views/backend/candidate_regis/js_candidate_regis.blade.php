@@ -2,25 +2,19 @@
 
 /// this function For Datatable
 var table_process;
+var nama_user ='{{Auth::user()->role_id}}';
 $(function(){
 
      table_process = $('#tableCandidateRegis').DataTable({
-            dom: 'Blfrtip',
+            dom: 'Bflrtip',
            
             buttons: [
                 {
                     filename: 'KARYAWAN NON EMPLOYEE'+'{{date('YmdHis')}}',
                     title: 'KARYAWAN NON EMPLOYEE',
-                    customizeData: function(data) {
-                        for(var i = 0; i < data.body.length; i++) {
-                        for(var j = 0; j < data.body[i].length; j++) {
-                            data.body[i][j] = '\u200C' + data.body[i][j];
-                        }
-                        }
-                    },
                     extend: 'excelHtml5',   
                     exportOptions: {
-                        columns: [ 0, 1, 2, 3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18],
+                        columns: [ 0, 1, 2, 3,4,5,6,7,8,9,10,11,12,13,14,15,16],
                         exportOptions: {
                             modifer : {
                                 order:'index',
@@ -29,7 +23,6 @@ $(function(){
                             }
                         },
                     }
-                    
                 },
             ],
             aaSorting: [[0, 'desc']],
@@ -44,11 +37,11 @@ $(function(){
                 { "aTargets": [ 2 ], "bSortable": true },
                 { "aTargets": [ 3 ], "bSortable": true }
             ],
-            "pageLength": 10,
-            "lengthMenu": [
-                [10, 25, 50, 100, 250,-1],
-                [10, 25, 50, 100, 250, "All"]
-            ],
+            // "columnDefs": [
+            //     { "searchable": false, "targets": 0 }
+            // ],
+            "iDisplayLength": 10,
+            lengthMenu: [[5, 10, 25, 50, 100, -1], [5, 10, 25, 50, 100, "All"]],
             processing: true,
             serverSide: true,
             deferRender: true,
@@ -86,6 +79,31 @@ $(function(){
             {data: 'contract_periode',name:'contract_periode'},
             {data: 'salary',name:'salary', orderable: false},
             {data: 'supervisor',name:'supervisor',  orderable: false},
+            {data: 'job_fptk_id',name:'job_fptk_id',
+                render: function(data, type, row)
+                {
+                    return '<a class="btn btn-primary" href="assessment-candidate-regis/'+row.candidate_id+'">Assessment</a>'
+                }
+            },
+            {data: 'subco',name:'subco',
+                render: function(data, type, row){
+                    if(nama_user == 2)
+                    {
+                       if(row.subco == 'yes')
+                        {
+                            return '<p align="center"><img src="images/checklist.png" width="20" height="20"></p>'
+                        }
+                        else
+                        {
+                            return '<p align="center"><img src="images/no_checklist.png" width="20" height="20"></p>';
+                        }
+                    }
+                    else
+                    {
+                        return '<p align="center"><img src="images/min.png" width="20" height="20"></p>';
+                    }
+                }
+            },
             {data: 'project_name',name:'name_holder',  visible: false},
             {data: 'cost_center',name:'name_holder',  visible: false},
             {data: 'work_location',name:'name_holder',  visible: false},
@@ -93,8 +111,6 @@ $(function(){
             {data: 'employment_type',name:'name_holder',  visible: false},
             {data: 'desc_benefit',name:'name_holder',  visible: false},
             {data: 'benefit',name:'name_holder',  visible: false},
-            {data: 'ktp_no',name:'name_holder',visible: false},
-            {data: 'no_npk',name:'name_holder',visible: false},
             {
                 data: 'status',name:'status',
                 render: function(data,type,row){
@@ -119,7 +135,15 @@ $(function(){
             {
                 data:'job_fptk_id',
                 mRender: function (data, type, row) {
-                    return '<a href="candidate-regis/edit/'+row['candidate_id']+'" class="btn btn-primary"><i class="fa fa-edit"></i></a>'
+                        if(nama_user == 2 || nama_user == 9 || nama_user == 10)
+                        {
+                            return '<a href="candidate-regis/edit/'+row['candidate_id']+'" class="btn btn-primary"><i class="fa fa-edit"></i></a>'+
+                            '<a href="candidate-regis/delete/'+row['candidate_id']+'" class="btn btn-danger"><i class="fa fa-trash"></i></a>';
+                        }
+                        else
+                        {
+                            return '<p align="center"><img src="images/min.png" width="20" height="20"></p>';
+                        }
                 }
             }
         ],
@@ -127,6 +151,8 @@ $(function(){
     });
 
     $('#search_').keypress(function(event){
+
+
         if(event.which == 13) {
           table_process.clear();
           table_process.destroy();
@@ -138,16 +164,9 @@ $(function(){
                     {
                         filename: 'KARYAWAN NON EMPLOYEE'+'{{date('YmdHis')}}',
                         title: 'KARYAWAN NON EMPLOYEE',
-                        customizeData: function(data) {
-                        for(var i = 0; i < data.body.length; i++) {
-                        for(var j = 0; j < data.body[i].length; j++) {
-                            data.body[i][j] = '\u200C' + data.body[i][j];
-                             }
-                            }
-                        },
                         extend: 'excelHtml5',   
                         exportOptions: {
-                        columns: [ 0, 1, 2, 3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18],
+                        columns: [ 0, 1, 2, 3,4,5,6,7,8,9,10,11,12,13,14,15,16],
                             exportOptions: {
                                 modifer : {
                                     order:'index',
@@ -209,6 +228,31 @@ $(function(){
                 {data: 'contract_periode',name:'contract_periode'},
                 {data: 'salary',name:'salary', orderable: false},
                 {data: 'supervisor',name:'supervisor',  orderable: false},
+                {data: 'job_fptk_id',name:'job_fptk_id',
+                    render: function(data, type, row)
+                    {
+                        return '<a class="btn btn-primary" href="assessment-candidate-regis/'+row.candidate_id+'">Assessment</a>'
+                    }
+                },
+                {data: 'subco',name:'subco',
+                    render: function(data, type, row){
+                        if(nama_user == 2)
+                        {
+                           if(row.subco == 'yes')
+                            {
+                                return '<p align="center"><img src="images/checklist.png" width="20" height="20"></p>'
+                            }
+                            else
+                            {
+                                return '<p align="center"><img src="images/no_checklist.png" width="20" height="20"></p>';
+                            }
+                        }
+                        else
+                        {
+                            return '<p align="center"><img src="images/min.png" width="20" height="20"></p>';
+                        }
+                    }
+                },
                 {data: 'project_name',name:'name_holder',  visible: false},
                 {data: 'cost_center',name:'name_holder',  visible: false},
                 {data: 'work_location',name:'name_holder',  visible: false},
@@ -216,8 +260,6 @@ $(function(){
                 {data: 'employment_type',name:'name_holder',  visible: false},
                 {data: 'desc_benefit',name:'name_holder',  visible: false},
                 {data: 'benefit',name:'name_holder',  visible: false},
-                {data: 'ktp_no',name:'name_holder',visible: false},
-                {data: 'no_npk',name:'name_holder',visible: false},
                 {
                     data: 'status',name:'status',
                     render: function(data,type,row){
@@ -242,7 +284,15 @@ $(function(){
                 {
                     data:'job_fptk_id',
                     mRender: function (data, type, row) {
-                        return '<a href="candidate-regis/edit/'+row['candidate_id']+'" class="btn btn-primary"><i class="fa fa-edit"></i></a>'
+                            if(nama_user == 2 || nama_user == 9 || nama_user == 10)
+                            {``
+                                return '<a href="candidate-regis/edit/'+row['candidate_id']+'" class="btn btn-primary"><i class="fa fa-edit"></i></a>'+
+                                '<a href="candidate-regis/delete/'+row['candidate_id']+'" class="btn btn-danger"><i class="fa fa-trash"></i></a>';
+                            }
+                            else
+                            {
+                                return '<p align="center"><img src="images/min.png" width="20" height="20"></p>';
+                            }
                     }
                 }
             ],

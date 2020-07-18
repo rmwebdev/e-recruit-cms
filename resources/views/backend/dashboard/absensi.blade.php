@@ -27,14 +27,14 @@
              <input type="text" name="dateAbsen"  readonly class="form-control  pull-right datepicker" placeholder="Search By Date" onchange="getDataAbsensiDate('now')">
           </div>
           <div class="col-md-2" style="padding-left: 0">
-              <button class="btn bg-ungu color-white" onclick="getDataAbsensiDate('all')">
+<!--               <button class="btn bg-ungu color-white" onclick="getDataAbsensiDate('all')">
                 All Date  
-              </button>
-              {{-- <!-- <a href="{{route('dashboard.absensiAll')}}">
+              </button> -->
+              <a href="{{route('dashboard.absensiAll')}}">
                 <button class="btn bg-ungu color-white">
                   All Date  
                 </button>
-              </a> --> --}}
+              </a>
           </div>
       </div>
     </div>

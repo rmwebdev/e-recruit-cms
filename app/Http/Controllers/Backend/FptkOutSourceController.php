@@ -9,12 +9,13 @@ use Auth;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
 use Yajra\Datatables\Datatables;
+use DB;
 
 class FptkOutSourceController extends Controller
 {
-      public $position = ['Accessories Foreman','Accessories Operator','Account Support Staff','Accounting Administrator','Admin LOLO','Administation Support Staff','Administration Electrolux','Administration Leader','Administration WH Volvo','Administrator Inbound','Administrator OTM','Administrator Outbound','Administrator Shell','AdministratorKomisi','AP  Staff','Apprentice','Bandabags Fieldman','Billing & AR Staff','Cash Management Staff','Checker - Shell','Checker Inbound','Checker Outbound','Cleaning Service','Clinic Staff','CMT Staff - Car Carrier','CMT Staff - Holcim Trailer','CMT Staff - Milkrun','CMT Staff - Motor Carrier','CMT Staff - Pandaan','CMT Staff - Trailer','CMT Staff - Wingbox','CMT Staff- BAT','Custom Clearance Staff','Customer Service','Decanting Foreman','Delivery Foreman','Departure Control Staff','Discharge','Document Pooling Staff','Driver','Driver Management Staff','Driver Management Staff','Driver Openyard','EDI Staff','Facility Support Staff','Fieldman','Fieldman MC - Honda','Fieldman MC - Yamaha','Fieldman MC - YMH Inter WH','Fieldman Narogong','Fieldman SC - ADM','Fieldman SC - TAM','Fieldman TMMIN ADM FSCM','Finance Controller Staff','Foreman','Foreman Milkrun - TMMIN ADM FSCM','Foreman Motor Carrier','Foreman SC - Retail','Foreman SC - TAM & ADM','Forklift Operator','Forklift Operator - Decanting','Forklift Operator WH Volvo','Fuelman','GA Staff','Gardener','General Administrator','General Services Staff','Helper','HSSE Staff','Inventory Administrator','Jaminan Kontainer Staff','Kerani','Lab Staff','Loader','Maintenance Administrator','Maintenance Support Staff','Management Improvement','Mechanician','Messenger','Motoris Klotok','Office Boy','Office Girl','Operation Malang Fieldman','Operation Mojosari Fieldman','Operation Tuban Fieldman','Operational Staff','Operator Openyard','Operator Warehouse','Order Monitoring Staff','P2H Staff','Packing Operator','Petugas Rumah Tangga','Picker','Planning & OTM Staff','Planning Staff','POD Return Monitoring Staff','Pool Administrator','Procurement Staff','Procurement & VM Dept Head','Receiving Foreman','Receiving Operator','Receiving Team Leader','Receptionist','Return Administrator','Safety Staff','Safetyman','Sales Support','Scheduller Shell','Security','Security Cakung','Security Nagrak','Spareparts Administrator','SPK Administrator','Stock Controller','Supply Chain Management','Tax Administrator','Transport Staff','Trucking Monitoring  Administrator','Vanning Operator','VAS Member (Daily Worker)','Vehicle Management Staff','Vendor Management Administrator','Vendor Management Staff','Warehouse Administrator','Welder','Welder Foreman','Workshop Administrator'];
+      public $position = ['Accessories Foreman','Accessories Operator','Account Support Staff','Accounting Administrator','Admin LOLO','Administation Support Staff','Administration Electrolux','Administration Leader','Administration WH Volvo','Administrator Inbound','Administrator OTM','Administrator Outbound','Administrator Shell','AdministratorKomisi','AP  Staff','Apprentice','Bandabags Fieldman','Billing & AR Staff','Cash Management Staff','Checker - Shell','Checker Inbound','Checker Outbound','Cleaning Service','Clinic Staff','CMT Staff - Car Carrier','CMT Staff - Holcim Trailer','CMT Staff - Milkrun','CMT Staff - Motor Carrier','CMT Staff - Pandaan','CMT Staff - Trailer','CMT Staff - Wingbox','CMT Staff- BAT','Customer Service','Decanting Foreman','Delivery Foreman','Departure Control Staff','Document Pooling Staff','Driver','Driver Management Staff','Driver Management Staff','Driver Openyard','EDI Staff','Facility Support Staff','Fieldman','Fieldman MC - Honda','Fieldman MC - Yamaha','Fieldman MC - YMH Inter WH','Fieldman Narogong','Fieldman SC - ADM','Fieldman SC - TAM','Fieldman TMMIN ADM FSCM','Finance Controller Staff','Foreman','Foreman Milkrun - TMMIN ADM FSCM','Foreman Motor Carrier','Foreman SC - Retail','Foreman SC - TAM & ADM','Forklift Operator','Forklift Operator - Decanting','Forklift Operator WH Volvo','GA Staff','Gardener','General Administrator','General Services Staff','Helper','HSSE Staff','Inventory Administrator','Jaminan Kontainer Staff','Lab Staff','Loader','Maintenance Administrator','Maintenance Support Staff','Management Improvement','Mechanician','Messenger','Office Boy','Operation Malang Fieldman','Operation Mojosari Fieldman','Operation Tuban Fieldman','Operational Staff','Operator Openyard','Operator Warehouse','Order Monitoring Staff','P2H Staff','Packing Operator','Picker','Planning & OTM Staff','Planning Staff','POD Return Monitoring Staff','Pool Administrator','Procurement Staff','Receiving Foreman','Receiving Operator','Receiving Team Leader','Return Administrator','Safety Staff','Safetyman','Sales Support','Scheduller Shell','Security','Security Cakung','Security Nagrak','Spareparts Administrator','SPK Administrator','Stock Controller','Tax Administrator','Transport Staff','Trucking Monitoring  Administrator','Vanning Operator','VAS Member (Daily Worker)','Vehicle Management Staff','Vendor Management Administrator','Vendor Management Staff','Warehouse Administrator','Welder','Welder Foreman','Workshop Administrator'];
 
-      public $location = ['BALIKPAPAN','BANDUNG','BANJARMASIN','BOGOR','CAKUNG','CIBINONG','CIKANDE','CIKARANG','CILEGON','GRESIK','JAKARTA','JAMBI','KELANIS','MAKASSAR','MALANG','MARUNDA','MEDAN','NAGRAK','NAROGONG','PANDAAN','PERAK','SEMARANG','TANJUNG PRIOK','TUBAN','KERAWANG','OTHERS'];
+      public $location = ['BALIKPAPAN','BANDUNG','BANJARMASIN','BOGOR','CAKUNG','CIBINONG','CIKANDE','CIKARANG','CILEGON','GRESIK','JAKARTA','JAMBI','KELANIS','MAKASSAR','MALANG','MARUNDA','MEDAN','NAGRAK','NAROGONG','PANDAAN','PERAK','SEMARANG','TANJUNG PRIOK','TUBAN','OTHERS'];
 
       public $division = ['BG1','BG3','LSS','QHSE','HCGA','FINANCE & ACCOUNTING','LSS CC','BG2','IT','PFU','MARKETING','LSB','OPERATION'];
 
@@ -22,9 +23,10 @@ class FptkOutSourceController extends Controller
 
       public $project =  
        ['BAYER','SSC','VOLVO','WORKSHOP','YAMAHA','YAMAHA DEPO','ACCOUNTING','ADMIN SALES','ADMIN TAX','APL','AUTOMOTIVE','BAG','BANDABAGS','BAT','BEKO','BLIBLI','BLUESCOPE','BUMA','CAR CARRIER','CHEVRON','CLARIANT','CMT','CUSTOMS CLEARANCE BALIKPAPAN','DEPT IT','ELECTROLUX','ELNUSA','ESTATE','EX PROJECT'
-      ,'EXIM','F&B','FINANCE','FUELLER','GA BALIKPAPAN' ,'GENERAL AFFAIR','GENERAL SERVICE','HALLO BANANA','HCGA','HEAVY EQUIPMENT','HOLCIM MIXER','HOLCIM,TRAILER','HSSE BALIKPAPAN','IMS CILEGON','INDOFOOD','KEPPEL','LAZADA','LINDE','LUBRICANT','MAINTENANCE','MAKASSAR','MAZDA','MBI','MERCY','MI BALIKPAPAN','MILKRUN','MILKRUN (KAYABA)','MOTOR CARRIER','NISSAN','OFFICE SBY','OPERATION','PETRONAS','PIR BPN','PLB','POOL','POOL CILEGON','POOL PANDAAN','PROCUREMENT','PROCUREMENT BALIKPAPAN','PROJECT MAZDA','QHSE','RB','RM MEDAN','SALES SUPPORT','SCHLUMBERGER','SHELL','SOKONINDO','SSC','TATA','TAX','TOTAL','TRAILER','TRANSPORT BALIKPAPAN','TRANSPORT PROJECT','VENDOR MANAGEMENT','VOLVO','WH BUMA BALIKPAPAN','WH PBU BALIKPAPAN','WH SCANIA BALIKPAPAN','WH SHELL BALIKPAPAN','WH VOLVO BALIKPAPAN','WING BOX','WORKSHOP','YAMAHA','YAMAHA DC','YAMAHA DEPO','YAMAHA DEPO BANDUNG ','YAMAHA DEPO JAKARTA & HASJRAT','SEB','BRIDGESTONE','OTHERS'];
+      ,'EXIM','F&B','FINANCE','FUELLER','GA BALIKPAPAN' ,'GENERAL AFFAIR','GENERAL SERVICE','HALLO BANANA','HCGA','HEAVY EQUIPMENT','HOLCIM MIXER','HOLCIM,TRAILER','HSSE BALIKPAPAN','IMS CILEGON','INDOFOOD','KEPPEL','LAZADA','LINDE','LUBRICANT','MAINTENANCE','MAKASSAR','MAZDA','MBI','MERCY','MI BALIKPAPAN','MILKRUN','MILKRUN (KAYABA)','MOTOR CARRIER','NISSAN','OFFICE SBY','OPERATION','PETRONAS','PIR BPN','PLB','POOL','POOL CILEGON','POOL PANDAAN','PROCUREMENT','PROCUREMENT BALIKPAPAN','PROJECT MAZDA','QHSE','RB','RM MEDAN','SALES SUPPORT','SCHLUMBERGER','SHELL','SOKONINDO','SSC','TATA','TAX','TOTAL','TRAILER','TRANSPORT BALIKPAPAN','TRANSPORT PROJECT','VENDOR MANAGEMENT','VOLVO','WH BUMA BALIKPAPAN','WH PBU BALIKPAPAN','WH SCANIA BALIKPAPAN','WH SHELL BALIKPAPAN','WH VOLVO BALIKPAPAN','WING BOX','WORKSHOP','YAMAHA','YAMAHA DC','YAMAHA DEPO','YAMAHA DEPO BANDUNG ','YAMAHA DEPO JAKARTA & HASJRAT', 'SEB','OTHERS'];
 
       public $cost_center = ['PUNINAR SARANARAYA','PUNINAR JAYA','MULTILAND','PUNINAR INFINITE RAYA','PUNINAR FUELLER','PUNINAR MITRA ABADI','LSBL','OTHERS'];
+
 
     public function __construct()
     {
@@ -420,6 +422,9 @@ class FptkOutSourceController extends Controller
       $data['gender']  = \App\Models\Parameters::gender()->get();
       $data['major']  = \App\Models\MasterSunfish::major();
       $data['edit_data'] = \App\Models\JobFptk::where('job_fptk_id',$id)->first();
+
+
+      // dd($data); die();
       return view('backend.candidate_outsource.detail',$data);
     }
 
@@ -618,6 +623,12 @@ class FptkOutSourceController extends Controller
         {
             return response()->json( ['status'=>'errors','candidate_error'=>'The candidate  is already exist'] ,422);
         }
+
+        $salaryEncrypt = DB::select( DB::raw("SELECT pgp_sym_encrypt::text FROM pgp_sym_encrypt('".$request->salary."'::text, 'AES_KEY'::text)") );//::text,'AES_KEY'
+
+        // $salaryEncrypt = DB::select( DB::raw("SELECT pgp_sym_encrypt::bytea FROM pgp_sym_encrypt('".$request->salary."', '')") );//::text,'AES_KEY'
+
+        // return $salaryEncrypt[0]->pgp_sym_encrypt;
        
 
         \DB::beginTransaction();
@@ -630,7 +641,7 @@ class FptkOutSourceController extends Controller
           $candidate->name_holder = $request->name_holder;
           $candidate->job_fptk_id = $get_fptk->job_fptk_id;
           $candidate->company_name = $request->company_name;
-          $candidate->salary = $request->salary;
+          $candidate->salary = $salaryEncrypt[0]->pgp_sym_encrypt;
           $candidate->join_date = $request->join_date;
           $candidate->supervisor = $request->supervisor;
           $candidate->end_date = $request->end_date;
@@ -651,6 +662,8 @@ class FptkOutSourceController extends Controller
           $candidate->no_npk = $request->no_npk;
 
           $candidate->save();
+
+          \Log::info($candidate);
 
           $get_candidate = \App\Models\Candidate::where('job_fptk_id',$get_fptk->job_fptk_id)->count();
           

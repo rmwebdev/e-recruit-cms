@@ -300,33 +300,33 @@ class JobFptk extends Model
 
     }    
     
-     public static function drop_non_employee($year="",$division="",$requester_name="",$subco="")
-     {
-         $result = JobFptk::where('status','drop');
-         $result =$result->where('type_fptk','outsource');
-         $where = ['division'=>$division,'requester_name'=>$requester_name];
-         $where2 = ['subco'=>$subco];
+    // public static function drop_non_employee($year="",$division="",$requester_name="",$subco="")
+    // {
+    //     $result = JobFptk::where('status','drop');
+    //     $result =$result->where('type_fptk','outsource');
+    //     $where = ['division'=>$division,'requester_name'=>$requester_name];
+    //     $where2 = ['subco'=>$subco];
 
-         if(!empty($division) && !empty($requester_name))   
-         {
-            $result =  $result->where($where);    
-         }
-         else if(!empty($where['division']))
-         {   
+    //     if(!empty($division) && !empty($requester_name))   
+    //     {
+    //        $result =  $result->where($where);    
+    //     }
+    //     else if(!empty($where['division']))
+    //     {   
 
-             $result = $result->where('division',$division);    
-         }
-         elseif (!empty($where['requester_name'])) 
-         {
-             $result = $result->where('requester_name',$requester_name);
-         }   
-         elseif(!empty($subco))  
-         {
-             $result = $result->where($where2);
-         }  
+    //         $result = $result->where('division',$division);    
+    //     }
+    //     elseif (!empty($where['requester_name'])) 
+    //     {
+    //         $result = $result->where('requester_name',$requester_name);
+    //     }   
+    //     elseif(!empty($subco))  
+    //     {
+    //         $result = $result->where($where2);
+    //     }  
         
-         return $result->count();
-     }    
+    //     return $result->count();
+    // }    
 
     public static function rejected_non_employee($year="",$division="",$requester_name="",$subco="")
     {
@@ -414,8 +414,7 @@ class JobFptk extends Model
             ->groupBy('a.gender')->get();  
 
     }    
-    
-	public static function universitas_hired($year="",$division="",$requester_name="")
+    public static function universitas_hired($year="",$division="",$requester_name="")
     {
         $result =  DB::table('e_recruit.tr_candidate as a')
          ->leftjoin('e_recruit.tr_job_fptk as b','a.job_fptk_id','=','b.job_fptk_id')
@@ -442,7 +441,6 @@ class JobFptk extends Model
             ->groupBy('a.edu_university')->get();  
 
     }    
-    
     public static function universitas_all($year="",$division="",$requester_name="")
     {
         $result =  DB::table('e_recruit.tr_candidate as a')
@@ -470,10 +468,7 @@ class JobFptk extends Model
             ->take(30)
             ->get(); 
 
-    }
-
-
-
+    }    
     public static function position_name_hired($year="",$division="",$requester_name="")
     {
 

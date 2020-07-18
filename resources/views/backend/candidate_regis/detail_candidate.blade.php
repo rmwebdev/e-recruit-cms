@@ -176,7 +176,7 @@
 	                        <div class="col-sm-6">
 	                          <div class="form-group">
 	                            <label class="control-label  font-14"> SALARY </label>
-	                            <input class="form-control" type="text" name="salary" readonly id="salary" value="{{$get_data->salary}}" >
+	                            <input class="form-control" type="text" name="salary" readonly id="salary" value="{{$salary->salary}}" >
 	                            <i class="invalid-feedback" role="alert"></i>                                 
 	                          </div>
 	                        </div>

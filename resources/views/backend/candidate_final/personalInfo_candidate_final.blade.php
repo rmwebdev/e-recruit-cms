@@ -93,13 +93,25 @@
 
                             <div class="form-group">
                               <label class="control-label"> RELIGION <span class="span-mandatory">*</span></label>
-                              <select class="form-control" id="religion" name="religion" required >
+                              <select class="form-control" id="religion" name="religion" onchange="get_religion(this)" required >
                               <option value=""> - Choose Religion - </option>
                               @foreach($religion as $agama)
                                 <option value="{{$agama->name}}" {{(!empty($candidate->religion) && $candidate->religion == $agama->name ) ? "selected" : "" }} >{{$agama->name}}  </option>
                               @endforeach
                               </select>
-                              <i class="invalid-feedback" role="alert"></i>                         
+                              <i class="invalid-feedback" role="alert"></i> 
+
+                              <div style="margin-top: 7px;display: none" id="div_other_religion2">
+                                  <input class="form-control" type="text" name="other_religion"  id="other_religion" placeholder="Input Other Religion">
+                                  <i class="invalid-feedback" role="alert"></i>                                 
+                              </div>
+
+                              @if($candidate->religion == 'Other')
+                                <div style="margin-top: 7px;" id="div_other_religion">
+                                  <input class="form-control" type="text" name="other_religion"  id="other_religion" value="{{$candidate->other_religion}}">
+                                  <i class="invalid-feedback" role="alert"></i>                                 
+                                </div>
+                              @endif
                             </div>
 
                             <div class="form-group">
@@ -123,13 +135,26 @@
                             <div class="col-md-6">
                               <div class="form-group">
                                 <label class="control-label"> CITY <span class="span-mandatory">*</span></label>
-                                <select class="form-control" id="city" required name="city" >
+                                <select class="form-control" id="city" required name="city" onchange="get_other_city(this)">
                                   <option value=""> - Choose City - </option>
                                   @foreach($city as $ct)
                                     <option value="{{$ct->name}}"  {{(!empty($candidate->city) && $candidate->city == $ct->name ) ? "selected" : "" }} >{{$ct->name}}  </option>
                                   @endforeach
                                 </select>
                                 <i class="invalid-feedback" role="alert"></i>
+
+                                <div style="margin-top: 7px;display: none" id="div_other_city2">
+                                    <input class="form-control" type="text" name="other_city" id="other_city" placeholder="Input Other City">
+                                    <i class="invalid-feedback" role="alert"></i>                                 
+                                </div>
+
+                                @if($candidate->city == 'Other')
+                                  <div style="margin-top: 7px;" id="div_other_city">
+                                    <input class="form-control" type="text" name="other_city" id="other_city" value="{{$candidate->other_city}}">
+                                    <i class="invalid-feedback" role="alert"></i>                                 
+                                  </div>
+                                @endif
+
                               </div>
 
                               <div class="form-group">
@@ -235,7 +260,6 @@
     <div class="row">
         <div class="col-md-12">
             <div class="card">
-
                 @php 
                   $candidate_id = Request::segment(2);
                 @endphp 
@@ -258,31 +282,53 @@
 
                               <div class="form-group">
                                 <label class="control-label"> MAJOR <span class="span-mandatory">*</span></label>
-                                <select class="form-control" id="edu_major" name="edu_major" required>
+                                <select class="form-control" id="edu_major" name="edu_major" onchange="get_edu_major(this)" required>
                                   <option value=""> - Choose Major - </option>
                                   @foreach($major as $mj)
                                     <option value="{{$mj->name}}" {{( trim($candidate->edu_major) == trim($mj->name) ) ? "selected" : "" }}>{{$mj->name}}  </option>
                                   @endforeach
                                 </select>
-                                <i class="invalid-feedback" role="alert"></i>                 
+                                <span class="invalid-feedback" role="alert"></span>
+
+                                <div style="margin-top: 7px;display: none" id="div_other_major2">
+                                  <input class="form-control" type="text" name="other_major"  id="other_major" placeholder="Input Other Major">
+                                  <i class="invalid-feedback" role="alert"></i>                                 
+                                </div>
+
+                                @if($candidate->edu_major == 'Other')
+                                  <div style="margin-top: 7px;" id="div_other_major">
+                                    <input class="form-control" type="text" name="other_major"  id="other_major" value="{{$candidate->other_major}}">
+                                    <i class="invalid-feedback" role="alert"></i>                                 
+                                  </div>
+                                @endif
                               </div>
 
                               <div class="form-group">
                                 <label class="control-label"> SCHOOL/UNIVERSITY <span class="span-mandatory">*</span></label>
-                                 <select name="edu_university" id="edu_university" class="form-control">
+                                 <select name="edu_university" id="edu_university" class="form-control" onchange="get_edu_school(this)">
                                   <option value=""> - Choose School / University - </option>
                                   @foreach($list_school as $school)
                                       <option value="{{$school->name}}" {{ ( trim($school->name) == trim($candidate->edu_university) ) ? 'selected':''}}>{{$school->name}}</option>
                                   @endforeach
                                 </select>
-                                <i class="invalid-feedback" role="alert"></i>                 
-                              </div>
+                                <i class="invalid-feedback" role="alert"></i>   
 
+                                <div style="margin-top: 7px;display: none" id="div_other_school2">
+                                  <input class="form-control" type="text" name="other_school"  id="other_school" placeholder="Input Other School">
+                                  <i class="invalid-feedback" role="alert"></i>                                 
+                                </div>
+
+                                @if($candidate->edu_university == 'Other')
+                                  <div style="margin-top: 7px;" id="div_other_school">
+                                    <input class="form-control" type="text" name="other_school"  id="other_school" value="{{$candidate->other_school}}">
+                                    <i class="invalid-feedback" role="alert"></i>                                 
+                                  </div>
+                                @endif            
+                              </div>
                             </div>
 
 
                             <div class="col-sm-6">
-                              
                               <div class="form-group">
                                 <label class="control-label"> IPK/GPA  <span class="span-mandatory">*</span></label>
                                  <input type="text" class="numeric validate form-control number_valid" required id="edu_ipk" name="edu_ipk"  value="{{(empty($candidate->edu_ipk)) ? "" : $candidate->edu_ipk }}" placeholder="example : 3.45" maxlength="4" >
@@ -294,7 +340,6 @@
                                 <input type="text" class="validate form-control number_valid_char" maxlength="4" id="edu_start_year" name="edu_start_year" required  value="{{(empty($candidate->edu_start_year)) ? "" : $candidate->edu_start_year }}" placeholder="format : YYYY, example : 2018" >
                                 <i class="invalid-feedback" role="alert"></i>                 
                               </div>
-
 
                               <div class="form-group">
                                 <label class="control-label"> END YEAR  <span class="span-mandatory">*</span></label>
@@ -331,12 +376,10 @@
                                 <input type="text" class="validate form-control" id="exp_buss_sector" placeholder="Ex : Otomotif" name="exp_buss_sector" maxlength="50" value="{{(empty($candidate->exp_buss_sector)) ? "" : $candidate->exp_buss_sector }}">
                                 <i class="invalid-feedback" role="alert"></i>                 
                               </div>
-                              
                             </div>
 
 
                             <div class="col-sm-6">
-                              
                               <div class="form-group">
                                 <div class="row">
                                   <div class="col-sm-6">
@@ -477,8 +520,6 @@
                             </div>
                           </div>
 
-
-
                           <div class="container">
                             <div class="mt-3 pull-right">
                               <a onclick="window.close()" class="btn btn-default pl-5 pr-5" > Cancel </a>
@@ -495,7 +536,6 @@
 
 </form>
 <script type="text/javascript">
-
   $('#candidate_form').on('shown.bs.collapse', function() {
       $('#image_bottom_form').show();
       $('#image_top_form').hide();
@@ -528,5 +568,59 @@
       $('#image_top_entry_data').show();
   });
 
- 
+  function get_religion(a)
+  {
+    if($(a).val()=='Other')
+    {
+      $('#div_other_religion2').show();
+    }
+    else
+    {
+      $('#div_other_religion').hide(); 
+      $('#div_other_religion2').hide(); 
+      $('[name="other_religion"]').val('');  
+    }
+  }
+
+  function get_edu_major(e)
+  {
+    if($(e).val()=='Other')
+    {
+      $('#div_other_major2').show();
+    }
+    else
+    {
+      $('#div_other_major').hide(); 
+      $('#div_other_major2').hide(); 
+      $('[name="other_major"]').val('');  
+    }
+  }
+
+  function get_edu_school(f)
+  {
+    if($(f).val()=='Other')
+    {
+      $('#div_other_school2').show();
+    }
+    else
+    {
+      $('#div_other_school').hide(); 
+      $('#div_other_school2').hide(); 
+      $('[name="other_school"]').val('');  
+    }
+  }
+
+  function get_other_city(i)
+  {
+    if($(i).val()=='Other')
+    {
+      $('#div_other_city2').show();
+    }
+    else
+    {
+      $('#div_other_city').hide(); 
+      $('#div_other_city2').hide(); 
+      $('[name="other_city"]').val('');  
+    }
+  }
 </script>

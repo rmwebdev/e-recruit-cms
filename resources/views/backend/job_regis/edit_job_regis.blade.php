@@ -281,10 +281,18 @@
          	</div>
 
          	<div class="card-footer" style="background-color: #f0f0f0">
-					<center>
-						<button type="submit" class="btn btn-primary" id="updateJobRegis">UPDATE</button>
-						<a href="{{url('job-regis')}}" class="btn btn-warning">CANCEL</a>
-					</center>	
+     		    @php
+			    $role = \DB::table('e_recruit.roles')
+			    ->where('id', Auth::user()->role_id)
+			    ->get();
+			    @endphp
+				<center>
+					<!-- <button type="submit" class="btn btn-primary" id="updateJobRegis">UPDATE</button> -->
+				    @if($role[0]->name == 'Super User' || $role[0]->name == 'Admin HR' || $role[0]->name == 'Subco' )
+					<button type="submit" class="btn btn-primary" id="updateJobRegis">UPDATE</button>
+				    @endif
+					<a href="{{url('rec-process')}}" class="btn btn-warning">CANCEL</a>
+				</center>	
 			</div>
 		</form>	
 

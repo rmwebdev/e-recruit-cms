@@ -24,7 +24,7 @@
                     <h3 class="color-ungu  pl-3 mt-1 font-18 font-weight-900">  NON EMPLOYEE </h3>   
                 </div>
               </div>
-              <div class="pull-right"> 
+              <div class="pull-right">
 <!-- 
                 <a class="btn bg-ungu"  href="{{url('dashboard-outsource')}}" style="color: #fff" target="_blank"> DASHBOARD
                 </a> -->
@@ -65,10 +65,12 @@
                                     <th>NAME</th>
                                     <th>POSITION NAME</th>
                                     <th>JOIN DATE</th>
-                                    <th>END DATE</th>
+                                    <th>END DATE</th> 
                                     <th>CONTRACT PERIODE</th>
                                     <th>SALARY</th>
                                     <th>SUPERVISOR</th>
+                                    <th>ASSESSMENT</th>
+                                    <th>SUBCO</th>
                                     <th>PROJECT NAME</th>
                                     <th>ENTITI</th>
                                     <th>WORK LOCATION</th>
@@ -76,42 +78,12 @@
                                     <th>EMPLOYEE TYPE</th>
                                     <th>DESC BENEFIT</th>
                                     <th>BENEFIT</th>
-                                    <th>NO KTP</th>
-                                    <th>NO NPK</th>
                                     <th>STATUS</th>
                                     <th>ACTION</th>
                                 </tr>
                             </thead>
-
-                            <tfoot>
-                                <tr align="center" style="font-weight:bold">
-                                    <th>NO</th>            
-                                    <th>REQUEST NUMBER</th>
-                                    <th>NAME</th>
-                                    <th>POSITION NAME</th>
-                                    <th>JOIN DATE</th>
-                                    <th>END DATE</th>
-                                    <th>CONTRACT PERIODE</th>
-                                    <th>SALARY</th>
-                                    <th>SUPERVISOR</th>
-                                    <th>PROJECT NAME</th>
-                                    <th>ENTITI</th>
-                                    <th>WORK LOCATION</th>
-                                    <th>PT OS</th>
-                                    <th>EMPLOYEE TYPE</th>
-                                    <th>DESC BENEFIT</th>
-                                    <th>BENEFIT</th>
-                                    <th>NO KTP</th>
-                                    <th>NO NPK</th>
-                                    <th>STATUS</th>
-                             
-                                    <th>ACTION</th>
-                                </tr>
-                            </tfoot>
                         </table>
                     </div>
-
-                    
                 </div>
             </div>
         </div>
@@ -120,9 +92,6 @@
 
 
 <!-- Modal   Upload -->
-
-
-
 <div class="modal fade" id="modalUpload" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg" role="document"  style="width:50%">
     <div class="modal-content">
@@ -152,8 +121,6 @@
     </div>
   </div>
 </div>
-
-
 <!-- end Modal -->
 
 

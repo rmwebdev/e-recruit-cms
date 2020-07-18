@@ -84,15 +84,23 @@
                     <td>RELIGION </td>
                     <td>:</td>
                     <td>
-                      <select class="form-control" id="religion" name="religion" required="required" >
+                      <select class="form-control" id="religion" name="religion" required="required" onchange="get_religion(this)">
                         <option value=""> - Choose Religion - </option>
                         @foreach($religion as $agama)
                           <option value="{{$agama->name}}">{{$agama->name}}  </option>
                         @endforeach
                       </select>
                       <i class="invalid-feedback" role="alert"></i>
+
+                      <div style="margin-top: 7px;display: none" id="div_other_religion">
+                        <input class="form-control" type="text" name="other_religion"  id="other_religion" placeholder="Input Other Religion">
+                        <i class="invalid-feedback" role="alert"></i>    
+                      </div> 
                     </td>
                   </tr>
+
+
+
                   <tr>
                     <td>MARITAL STATUS </td>
                     <td>:</td>
@@ -122,13 +130,18 @@
                     <td>:</td>
                     <td>
                       <div class="city_select2_complete">
-                        <select class="form-control" id="city" required="required" name="city" >
+                        <select class="form-control" id="city" required="required" name="city" onchange="get_city(this)">
                           <option value=""> - Choose City - </option>
                           @foreach($city as $ct)
                             <option value="{{$ct->name}}"  >{{$ct->name}}  </option>
                           @endforeach
                         </select>
                       </div>
+
+                      <div style="margin-top: 7px;display: none" id="div_other_city">
+                        <input class="form-control" type="text" name="other_city"  id="other_city" placeholder="Input Other City">
+                        <i class="invalid-feedback" role="alert"></i>    
+                      </div> 
                     </td>
                   </tr>
                   
@@ -294,18 +307,24 @@
                       </div>
                     </td>
                   </tr>
+
                   <tr>
                     <td>MAJOR <span class="span-mandatory">*</span></td>
                     <td>:</td>
                     <td>
                       <div class="edu_university_select2">
-                        <select class="form-control" id="edu_major" name="edu_major" required>
+                        <select class="form-control" id="edu_major" name="edu_major" onchange="get_major(this)" required>
                           <option value=""> - Choose Major - </option>
                           @foreach($major as $mj)
                             <option value="{{$mj->name}}">{{$mj->name}}  </option>
                           @endforeach
                         </select>
                         <i class="invalid-feedback" role="alert"></i>
+                      </div>
+
+                      <div style="margin-top: 7px;display: none" id="div_other_major">
+                        <input class="form-control" type="text" name="other_major"  id="other_major" placeholder="Input Other Major">
+                        <i class="invalid-feedback" role="alert"></i>    
                       </div>
                     </td>
                   </tr>
@@ -315,7 +334,7 @@
                     <td>:</td>
                     <td>
                     <div class="edu_university_select2">
-                      <select name="edu_university" id="edu_university" class="form-control">
+                      <select name="edu_university" id="edu_university" class="form-control" onchange="get_school(this)">
                         <option value=""> - Choose School / University - </option>
                         @foreach($list_school as $school)
                             <option value="{{$school->name}}">{{$school->name}}</option>
@@ -323,8 +342,14 @@
                       </select>
                       <i class="invalid-feedback" role="alert"></i>
                     </div>
+
+                      <div style="margin-top: 7px;display: none" id="div_other_school">
+                        <input class="form-control" type="text" name="other_school"  id="other_school" placeholder="Input Other School">
+                        <i class="invalid-feedback" role="alert"></i>    
+                      </div> 
                     </td>
                   </tr>
+
                   <tr>
                     <td>IPK/GPA <span class="span-mandatory">*</span></td>
                     <td>:</td>
@@ -434,3 +459,57 @@
     </center>
 
 </form>
+
+<script type="text/javascript">
+  function get_religion(a)
+  {
+    if($(a).val()=='Other')
+    {
+      $('#div_other_religion').show();
+    }
+    else
+    {
+      $('#div_other_religion').hide(); 
+      $('[name="other_religion"]').val('');  
+    }
+  }
+
+  function get_city(b)
+  {
+    if($(b).val()=='Other')
+    {
+      $('#div_other_city').show();
+    }
+    else
+    {
+      $('#div_other_city').hide(); 
+      $('[name="other_city"]').val('');  
+    }
+  }
+
+  function get_major(c)
+  {
+    if($(c).val()=='Other')
+    {
+      $('#div_other_major').show();
+    }
+    else
+    {
+      $('#div_other_major').hide(); 
+      $('[name="other_major"]').val('');  
+    }
+  }
+
+  function get_school(d)
+  {
+    if($(d).val()=='Other')
+    {
+      $('#div_other_school').show();
+    }
+    else
+    {
+      $('#div_other_school').hide(); 
+      $('[name="other_school"]').val('');  
+    }
+  }
+</script>

@@ -251,6 +251,7 @@ class SettingController extends Controller
                         'tr_users.name',
                         'roles.name as role_name',
                         'email',
+                        'email_user',
                         'position',
                         'nip',
                         'user_id',
@@ -408,6 +409,9 @@ class SettingController extends Controller
         $data['position'] = \App\Models\User::select('position')->get();
         $data['job_desc'] = \App\Models\User::select('job_desc')->get();
         $data['cost_center'] = \App\Models\User::select('cost_center')->get();
+        // $data['parent_user'] = \App\Models\User::select('parent_user')->get();
+        $data['parent_user'] = \DB::select("select name from e_recruit.tr_users where nip = (select parent_user from e_recruit.tr_users where user_id = '".$id."')");
+
         return view('backend.setting.edit_user',$data);
     }
 
@@ -423,6 +427,7 @@ class SettingController extends Controller
         $update  = \App\Models\User::find($id);
         $update->name = $request->name;
         $update->email = $request->email;
+        $update->email_user = $request->email_user;
         $update->hp = $request->hp;
         $update->nip = $request->nip;
         $update->division = $request->division;
@@ -431,6 +436,7 @@ class SettingController extends Controller
         $update->position = $request->position;
         $update->job_desc = $request->job_desc;
         $update->cost_center = $request->cost_center;
+        $update->parent_user = $request->parent_user;
         $update->password = bcrypt($request->password);
         $update->save();
         return response()->json(['status'=>'success']);

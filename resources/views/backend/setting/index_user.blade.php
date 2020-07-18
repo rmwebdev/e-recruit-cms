@@ -163,7 +163,7 @@ $(document).ready(function() {
                 {data: 'name'},
                 {data: 'role_name','name':'name'},
                 {data: 'position'},
-                {data: 'email'},
+                {data: 'email_user'},
                 {data: 'user_id',
                 render: function(data, type, row){
           

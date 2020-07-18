@@ -199,14 +199,14 @@
 					    <div class="col-md-6">  <!-- Left Form  --->
 							<h5> <strong>CANDIDATE QUALIFICATION</strong> </h5>
 							<div class="form-group">
-							    <label for="exampleInputEmail1">EDUCATION <span class="span-mandatory">*</span> </label>
+							    <label for="exampleInputEmail1">EDUCATION <span class="span-mandatory"></span> </label>
 							    <select class="form-control" name="education">
 							    	<option value="">   - SELECT EDUCATION  - </option>
 									@foreach($education as $edu)
 										<option value="{{$edu->name}}">{{$edu->name}}</option>
 									@endforeach
 								</select>
-								<i class="invalid-feedback" role="alert"></i>
+								{{-- <i class="invalid-feedback" role="alert"></i> --}}
 							</div>
 
 						  	<div class="form-group">

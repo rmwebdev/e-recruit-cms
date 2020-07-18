@@ -20,7 +20,7 @@
 
 	                    	<div class="col-sm-6">
 	                          <div class="form-group">
-	                            <label class="control-label  font-14"> EMPLOYEE NAME   </label>
+	                            <label class="control-label  font-14"> EMPLOYEE NAME </label>
 	                            <input type="hidden" name="job_fptk_id" >
 	                            <input type="hidden" name="candidate_id" >
 	                            <input type="hidden" name="name_holder" >
@@ -42,10 +42,28 @@
 	                          </div>
 	                        </div>
 
-	   
-    						
+	                        <div class="col-sm-6">
+	                          <div class="form-group">
+	                            <label class="control-label  font-14"> NPK </label>
+	                            <input class="form-control" type="text" name="no_npk" readonly  id="no_npk">
+	                            <i class="invalid-feedback" role="alert"></i>                                 
+	                          </div>
+	                        </div>
+	                        <div class="col-sm-6">
+	                          <div class="form-group">
+	                            <label class="control-label  font-14"> WORKING LOCATION </label>
+	                            <input class="form-control" type="text" name="work_location" readonly  id="work_location"  >
+	                            <i class="invalid-feedback" role="alert"></i>                                 
+	                          </div>
+	                        </div>
 
-
+	                        <div class="col-sm-6">
+	                          <div class="form-group">
+	                            <label class="control-label  font-14"> GENDER </label>
+	                            <input class="form-control" type="text" name="gender" readonly  id="gender"  >
+	                            <i class="invalid-feedback" role="alert"></i>                                 
+	                          </div>
+	                        </div>
 	                        <div class="col-sm-6" id="div_company_name" style="display: none">
 	                        	<div class="form-group">
 		                            <label class="control-label  font-14"> PT OS   </label>
@@ -57,8 +75,6 @@
 		                            <i class="invalid-feedback" role="alert"></i>                                 
 	                          	</div>
 	                        </div> 	
-
-
 
 	                         <div class="col-sm-6"  id="div_edu_university" style="display: none"> 
 		                      <div class="form-group">
@@ -84,10 +100,6 @@
 	                            <i class="invalid-feedback" role="alert"></i>                                 
 	                          </div>
 	                        </div> 
-
-
-
-
 	                        <div class="col-sm-6">
 	                          <div class="form-group">
 	                            <label class="control-label  font-14"> PROJECT NAME </label>
@@ -95,11 +107,6 @@
 	                            <i class="invalid-feedback" role="alert"></i>                                 
 	                          </div>
 	                        </div>	
-
-
-
-
-
 
 	                        <div class="col-sm-6">
 	                          <div class="form-group">
@@ -119,17 +126,6 @@
 									<span class="invalid-feedback" role="alert"></span>
 							  	</div>
 							</div>
-
-
-	                        <div class="col-sm-6">
-	                          <div class="form-group">
-	                            <label class="control-label  font-14"> WORKING LOCATION </label>
-	                            <input class="form-control" type="text" name="work_location" readonly  id="work_location"  >
-	                            <i class="invalid-feedback" role="alert"></i>                                 
-	                          </div>
-	                        </div>
-
-
 	                        <div class="col-sm-6">
 	                          <div class="form-group">
 	                            <label class="control-label  font-14"> DIVISION  </label>
@@ -212,8 +208,8 @@
 
 							<div class="col-sm-6">
 	                          <div class="form-group">
-	                            <label class="control-label  font-14"> REASON DESCRIPTION  </label>
-	                            <textarea class="form-control" type="text" name="reason_return"  id="reason_return"  ></textarea>
+	                            <label class="control-label  font-14"> REASON DESCRIPTION <span class="span-mandatory">*</span> </label>
+	                            <textarea class="form-control" type="text" name="reason_return"  id="reason_return"  required></textarea>
 	                            <i class="invalid-feedback" role="alert"></i>                                 
 	                          </div>
 	                        </div>
@@ -280,7 +276,7 @@
             	// console.log(resp.data.job_fptk);
             	console.log(resp.data);
 
-            	if(resp.data.job_fptk.employment_type == 'magang')
+            	if(resp.data.job_fptk.employment_type == 'magang'||resp.data.job_fptk.employment_type == 'pkl')
             	{
             		$('#div_edu_university').show();
             		$('#div_company_name').hide();		
@@ -291,6 +287,7 @@
             		$('#div_edu_university').hide();	
             	}
             	$('[name="name_holder"]').val(resp.data.name_holder);
+            	$('[name="gender"]').val(resp.data.gender);
             	$('[name="edu_university"]').val(resp.data.edu_university);
             	// $('[name="edu_university"]').val(resp.data.edu_university).trigger('change');
             	//$('[name="edu_university"]').select2("val",resp.data.edu_university.trim());
@@ -300,7 +297,8 @@
             	$('[name="company_name"]').val(resp.data.company_name);
             	$('[name="request_job_number"]').val(resp.data.job_fptk.request_job_number);
             	$('[name="position_name"]').val(resp.data.job_fptk.position_name);
-            	$('[name="requester_name"]').val(resp.requester_name);
+            	$('[name="requester_name"]').val(resp.requester_name);     	
+            	$('[name="no_npk"]').val(resp.data.no_npk);
             	$('[name="cost_center"]').val(resp.data.job_fptk.cost_center);
             	$('[name="work_location"]').val(resp.data.job_fptk.work_location);
             	$('[name="division"]').val(resp.data.job_fptk.division);

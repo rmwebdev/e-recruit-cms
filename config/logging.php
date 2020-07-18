@@ -82,6 +82,12 @@ return [
             'path' => storage_path('logs/job/job_wa.log'),
             'permission' => 0777,
         ],
+
+        'integration_psikonogram' => [
+            'driver' => 'daily',
+            'path' => storage_path('logs/integration/job_psikonogram.log'),
+            'permission' => 0777,
+        ],
     ],
 
 ];

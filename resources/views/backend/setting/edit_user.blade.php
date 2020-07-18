@@ -39,6 +39,13 @@
 							  </div>
 
 
+							  <div class="form-group row">
+							    <label for="" class="col-sm-3 col-form-label">EMAIL <span class="span-mandatory">*</span> : </label>
+							    <div class="col-sm-9">
+									<input type="text" class="validate form-control" id="email_user"  required="required" name="email_user" size="100" value="{{$user->email_user}}" >
+									<i class="invalid-feedback" role="alert"></i>
+							    </div>
+							  </div>
 
 							   <div class="form-group row">
 							    <label for="" class="col-sm-3 col-form-label"> DIVISION <span class="span-mandatory">*</span> </label>
@@ -109,9 +116,21 @@
 							  </div>
 
 
+							  <div class="form-group row">
+							    <label for="" class="col-sm-3 col-form-label"> LEADER <span class="span-mandatory">*</span> </label>
+							    <div class="col-sm-9">
+							    	<select name="parent_user" class="form-control">
+							    		@foreach($parent_user as $lead)
+							    			<option value="{{$lead->name}}"  {{($lead->name == $user->name) ? "selected":""}}>{{$lead->name}}</option>
+							    		@endforeach
+							    	</select>
+									<i class="invalid-feedback" role="alert"></i>
+							    </div>
+							  </div>
+
 
 							  <div class="form-group row">
-							    <label for="" class="col-sm-3 col-form-label">EMAIL <span class="span-mandatory">*</span> : </label>
+							    <label for="" class="col-sm-3 col-form-label">EMAIL LEADER<span class="span-mandatory">*</span> </label>
 							    <div class="col-sm-9">
 							    	<input name="email" type="text" required="required" class="form-control datepickerJoinDate" value="{{$user->email}}" id="email">
 									<i class="invalid-feedback date_process_validate" role="alert"></i>
@@ -166,6 +185,7 @@
             $('[name="cost_center"]').select2();
             $('[name="job_desc"]').select2();
             $('[name="position"]').select2();
+            $('[name="parent_user"]').select2();
 		})
 
 		$('#form-update-user').submit(function(event){

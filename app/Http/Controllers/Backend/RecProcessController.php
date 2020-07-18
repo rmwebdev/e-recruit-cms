@@ -1010,10 +1010,10 @@ class RecProcessController extends Controller
                         'auth' => ['ws_erec', '3reC!!!'],
                         'http_errors'=>false
                 ]);
-                $url ='https://services.puninar.com/hcis-post-candidate-to-hcis';
-                $url_master = 'https://services.puninar.com/hcis-get-data-master-from-hcis';
-                // $url ='https://middleware.puninar.com:9091/services-hcis-post-candidate-to-hcis';
-                // $url_master = 'https://middleware.puninar.com:9091/services-hcis-get-data-master-from-hcis';
+                // $url ='https://services.puninar.com/hcis-post-candidate-to-hcis';
+                // $url_master = 'https://services.puninar.com/hcis-get-data-master-from-hcis';
+                $url ='https://middleware.puninar.com:9091/services-hcis-post-candidate-to-hcis';
+                $url_master = 'https://middleware.puninar.com:9091/services-hcis-get-data-master-from-hcis';
                 $res = $client->post($url, 
                     ['body'=>json_encode(
                             [
@@ -1366,10 +1366,10 @@ class RecProcessController extends Controller
             $result_integrasi_stat=2;
             $result_integrasi_msg='';
             if (isset($result_integrasi['stat'])) {
-                if ($result_integrasi['stat']==1||$result_integrasi['stat']==3) {
-                    $result_integrasi_stat=1;
-                    $result_integrasi_msg=$result_integrasi['msg'];
-                }
+            	if ($result_integrasi['stat']==1||$result_integrasi['stat']==3) {
+            		$result_integrasi_stat=1;
+            		$result_integrasi_msg=$result_integrasi['msg'];
+            	}
             }
 
             \DB::commit();

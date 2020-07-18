@@ -69,14 +69,15 @@ class CandidateRegisController extends Controller
         ->where('id', Auth::user()->role_id)
         ->get();
 
-        // dd($cek_role[0]->name);
+        // dd($cek_role[0]->name);PGP_SYM_DECRYPT(salary_range_max::bytea,'AES_KEY')
 
 
         $search  = $request->val_search;
         $length  = $request->input('length');
         $data = 
         \DB::table('e_recruit.tr_candidate')
-        ->select('tr_candidate.*','project_name','tr_job_fptk.cost_center','work_location','company_name','employment_type','request_job_number','position_name','salary','benefit','desc_benefit','ktp_no','no_npk')
+        ->select('tr_candidate.*','project_name','tr_job_fptk.cost_center','work_location','company_name','employment_type','request_job_number','position_name',
+        DB::Raw("PGP_SYM_DECRYPT(salary::bytea, 'AES_KEY'::text) AS salary"),'benefit','desc_benefit')
         ->join('e_recruit.tr_job_fptk','tr_job_fptk.job_fptk_id','tr_candidate.job_fptk_id')
         ->join('e_recruit.tr_users', 'tr_job_fptk.requester_name', 'tr_users.nip')
         ->join('e_recruit.roles', 'tr_users.role_id', 'roles.id');
@@ -133,15 +134,16 @@ class CandidateRegisController extends Controller
         }
 
         $count_total = 
-        \DB::table('e_recruit.tr_job_fptk as b')
+        DB::table('e_recruit.tr_job_fptk as b')
         ->select('tr_candidate.*','b.project_name','b.cost_center','b.work_location','b.company_name','b.employment_type','b.request_job_number','b.position_name','b.salary')
         ->join('e_recruit.tr_candidate as a','b.job_fptk_id','a.job_fptk_id')
         ->where('b.type_fptk','outsource')->where('a.delete_time',NULL)->count();
 
 
         $count_filter = 
-         \DB::table('e_recruit.tr_job_fptk')
-        ->select('tr_candidate.*','project_name','cost_center','work_location','company_name','employment_type','request_job_number','position_name','salary','ktp_no','no_npk')
+         DB::table('e_recruit.tr_job_fptk')
+        ->select('tr_candidate.*','project_name','cost_center','work_location','company_name','employment_type','request_job_number','position_name',
+        DB::Raw("PGP_SYM_DECRYPT(salary::bytea, 'AES_KEY'::text) AS salary"))
         ->join('e_recruit.tr_candidate','tr_job_fptk.job_fptk_id','tr_candidate.job_fptk_id')
         ->where('type_fptk','outsource')
         ->orWhere('tr_candidate.name_holder', 'ILIKE', '%' . $search . '%')
@@ -388,6 +390,8 @@ class CandidateRegisController extends Controller
         $data['gender'] = Parameters::gender()->get();
         $data['assessment'] = Assessment::all();
         $data['candidate'] = Candidate::where('candidate_id',$id)->first();
+        
+        $data['salary'] = Candidate::select(DB::Raw("PGP_SYM_DECRYPT(salary::bytea, 'AES_KEY'::text) as salary"))->where('candidate_id',$id)->first();
         $data['fptk'] = \App\Models\JobFptk::where('type_fptk','outsource')->whereIn('job_fptk_id',$all_fptk)->get();
         $data['get_data'] =  Candidate::with('job_fptk')->where('candidate_id',$id)->first();
         $data['requester_name'] =  \App\Models\User::where('nip',$data['get_data']->job_fptk->requester_name)->first();
@@ -597,7 +601,7 @@ class CandidateRegisController extends Controller
         $file_cv = (empty($request->file('file_2'))) ?  $request->file_2_edit : $fileNameCv ;
 
         
-
+        $salaryEncrypt = DB::select( DB::raw("SELECT pgp_sym_encrypt::text FROM pgp_sym_encrypt('".$request['exp_salary_existing']."'::text, 'AES_KEY'::text)") );
     
         $candidate = Candidate::find($request->candidate_id);
 
@@ -632,7 +636,7 @@ class CandidateRegisController extends Controller
         $candidate->exp_end_year=(int)$request['exp_end_year'];
         $candidate->job_desc=trim($request['job_desc']);
         $candidate->exp_total=(int)$request['exp_total'];
-        $candidate->exp_salary_existing=$request['exp_salary_existing'];
+        $candidate->exp_salary_existing= $salaryEncrypt[0]->pgp_sym_encrypt;
         $candidate->process = 'CV IN';
         $candidate->result = 'PASSED';
         $candidate->file_1 = $file_photo;
@@ -767,19 +771,19 @@ class CandidateRegisController extends Controller
 
                 // var_dump($paramHistory); exit(); die();
 
-
+       
 
             \DB::table('e_recruit.tr_history_process')->insert(
                 $paramHistory
             );
        
           }
-
+          $salaryEncrypt = DB::select( DB::raw("SELECT pgp_sym_encrypt::text FROM pgp_sym_encrypt('".$request->salary."'::text, 'AES_KEY'::text)") );
 
           $candidate->name_holder = $request->name_holder;
           $candidate->job_fptk_id = $request->job_fptk_id;
           $candidate->company_name = $request->company_name;
-          $candidate->salary = $request->salary;
+          $candidate->salary = $salaryEncrypt[0]->pgp_sym_encrypt;
           $candidate->join_date = $request->join_date;
           $candidate->supervisor = $request->supervisor;
           $candidate->gender = $request->gender;
@@ -833,7 +837,6 @@ class CandidateRegisController extends Controller
             return response()->json(['status'=>$e->getMessage()],422);       
         }    
     }
-
 
     public function delete_candidate_outsource(Request $request)
     {
@@ -1071,11 +1074,14 @@ class CandidateRegisController extends Controller
         }
         else
         {
+
+            $salaryEncrypt = DB::select( DB::raw("SELECT pgp_sym_encrypt::text FROM pgp_sym_encrypt('".$request->salary."'::text, 'AES_KEY'::text)") );
+
               $candidate = \App\Models\Candidate::find($request->candidate_id);
               $candidate->name_holder = $request->name_holder;
               $candidate->job_fptk_id = $request->job_fptk_id;
               $candidate->company_name = $request->company_name;
-              $candidate->salary = $request->salary;
+              $candidate->salary = $salaryEncrypt[0]->pgp_sym_encrypt;
               $candidate->join_date = $request->join_date;
               $candidate->supervisor = $request->supervisor;
               $candidate->end_date = $request->end_date;
@@ -1111,6 +1117,7 @@ class CandidateRegisController extends Controller
         $data['gender'] = Parameters::gender()->get();
         $data['assessment'] = Assessment::all();
         $data['candidate'] = Candidate::where('candidate_id',$id)->first();
+        $data['salary'] = Candidate::select(DB::Raw("PGP_SYM_DECRYPT(salary::bytea, 'AES_KEY'::text) as salary"))->where('candidate_id',$id)->first();
         $data['fptk'] = \App\Models\JobFptk::where('type_fptk','outsource')->get();
         $data['get_data'] =  Candidate::with('job_fptk')->where('candidate_id',$id)->first();
         $data['requester_name'] =  \App\Models\User::where('nip',$data['get_data']->job_fptk->requester_name)->first();

@@ -396,7 +396,7 @@ class DashboardController extends Controller
         // $data =  Candidate::whereIn('process',['CALLED','INTERVIEW 1','PSYCHOTEST']);
 
         $data = 
-        \DB::table('e_recruit.tr_candidate as a')
+        DB::table('e_recruit.tr_candidate as a')
         ->select('a.process', 'a.date_process', 'a.position_level','a.status','a.name_holder','a.invitation_process','b.project_name','b.cost_center','b.work_location','a.company_name','b.employment_type','b.request_job_number','b.position_name','a.salary','b.benefit','b.desc_benefit')
         ->join('e_recruit.tr_job_fptk as b','b.job_fptk_id','a.job_fptk_id')
         ->whereIn('a.process',['CALLED']);
@@ -413,6 +413,7 @@ class DashboardController extends Controller
 
 
         return Datatables::of($data)
+        
         ->editColumn('process',function($data){
             if($data->process == 'CALLED')
             {
@@ -449,7 +450,7 @@ class DashboardController extends Controller
 
     public function getDataAbsensiAll()
     {
-        $dataAbsensiAll = \DB::select("select a.process, a.date_process, a.position_level,a.status,a.name_holder,a.invitation_process,b.project_name,b.cost_center, b.work_location,a.company_name,b.employment_type,b.request_job_number,b.position_name,a.salary,b.benefit,b.desc_benefit from e_recruit.tr_candidate as a inner join e_recruit.tr_job_fptk as b on b.job_fptk_id=a.job_fptk_id where a.process in ('CALLED')");
+        $dataAbsensiAll = DB::select("select a.process, a.date_process, a.position_level,a.status,a.name_holder,a.invitation_process,b.project_name,b.cost_center, b.work_location,a.company_name,b.employment_type,b.request_job_number,b.position_name,a.salary,b.benefit,b.desc_benefit from e_recruit.tr_candidate as a inner join e_recruit.tr_job_fptk as b on b.job_fptk_id=a.job_fptk_id where a.process in ('CALLED')");
 
         return Datatables::of($dataAbsensiAll)->make(true);
     }

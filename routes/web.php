@@ -144,6 +144,10 @@ Route::get('/candidate-regis/get_employee','CandidateRegisController@get_employe
 Route::post('/update_return_employee','CandidateRegisController@update_return_employee')->name('candidate-regis.update_return_employee');
 Route::post('/approved_return_employee','CandidateRegisController@approved_return_employee')->name('candidate-regis.approved_return_employee');
 
+	//Tambahan dendy 20.12.2019
+	Route::get('/assessment-candidate-regis/{id}','CandidateRegisController@assessment_candidate_regis')->name('assessment-candidate-regis');
+	Route::get('/candidate-regis/delete/{id}','CandidateRegisController@delete_candidate')->name('candidate-regis.delete');
+	Route::post('/candidate-regis/delete-candidate-outsource/','CandidateRegisController@delete_candidate_outsource')->name('candidate-regis.delete-candidate-outsource');
 });
 
 
@@ -165,6 +169,7 @@ Route::group(['namespace' => 'Backend',['middleware' => 'permission:create-fptk-
 	//Tambahan dendy 16.12.2019
 	Route::get('/view-fptk-outsource-candidate','FptkOutSourceController@view_fptk_outsource_candidate')->name('view-fptk-outsource-candidate');
 	Route::get('/view-histori-fptk-outsource-candidate','FptkOutSourceController@view_histori_fptk_outsource_candidate')->name('view-histori-fptk-outsource-candidate');
+	Route::get('/assessment-fptk-outsource/{id}','FptkOutSourceController@assessment_fptk_outsource')->name('assessment-fptk-outsource');
 });
 
 
@@ -392,9 +397,9 @@ Route::group(['namespace' => 'Backend',['middleware'=>'permission:read-export|re
 	Route::post('/action-setting-banner','DashboardController@action_setting_banner')->name('dashboard.action-setting-banner');
 	Route::delete('/delete-setting-banner/{id}','DashboardController@delete_setting_banner')->name('dashboard.delete-setting-banner');
 	Route::get('/edit-setting-banner','DashboardController@edit_setting_banner')->name('dashboard.edit-setting-banner');
+
+
+	// Tambahana Dendy 20.12.2019
+	Route::get('/dashboard/absensiAll','DashboardController@absensiAll')->name('dashboard.absensiAll');
+	Route::post('/dashboard/getDataAbsensiAll','DashboardController@getDataAbsensiAll')->name('dashboard.getDataAbsensiAll');
 });
-
-
-
-
-

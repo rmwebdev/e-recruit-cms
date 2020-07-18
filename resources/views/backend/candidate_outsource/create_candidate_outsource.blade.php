@@ -85,7 +85,7 @@
 							<div class="col-sm-6">
 		                      <div class="form-group">
 		                        <label class="control-label  font-14"> NPK</label>
-		                        <input class="form-control number_valid_char" type="text" name="no_npk"  id="no_npk" value="">
+		                        <input class="form-control" type="text" name="no_npk"  id="no_npk" value="">
 		                        <i class="invalid-feedback" role="alert"></i>                                 
 		                      </div>
 		                  </div>
@@ -240,36 +240,39 @@
 		                    </div>
 
 
-		                    <div class="col-sm-6">
-		                      <div class="form-group">
-		                        <label class="control-label font-14"> SUPERVISOR <span class="span-mandatory">*</span></label>
-		                         <select class="form-control select2" name="supervisor" id="supervisor" required>
-		                         	<option value="">  - SELECT SUPERVISOR -   </option>
-		                          	@foreach($user as $u)
-			                        		<option value="{{$u->name}}"  > {{$u->name}} </option>
-			                        @endforeach
-								</select>
-		                        <i class="invalid-feedback" role="alert"></i>
-		                        <small style="color: red;display: none;" id="error_validate_supervisor">Supervisor Is Required</small>                                 
-		                      </div>
-		                    </div>
-
+		                    
+							
+							<div class="col-sm-6">
+								<div class="form-group">
+								  <label class="control-label  font-14"  style="margin-top: 10px;"> CONTRACT PERIODE <span class="span-mandatory">*</span>  </label>
+								  <input class="form-control number_valid_char" type="text" name="contract_periode"  id="contract_periode">
+								  <i class="invalid-feedback" role="alert"></i>                                 
+								</div>
+							  </div>
+						
 
 		                    <div class="col-sm-6">
 		                      <div class="form-group">
 		                        <label class="control-label  font-14"> END DATE  <span class="span-mandatory">*</span></label>
-		                        <input class="form-control" type="text" name="end_date"  id="end_date" value=""  autocomplete="off">
+							  <input class="form-control" type="text" name="end_date"  id="end_date"   autocomplete="off" >
 		                        <i class="invalid-feedback" role="alert"></i>                                 
 		                      </div>
 		                    </div>
-
-		                    <div class="col-sm-6">
-		                      <div class="form-group">
-		                        <label class="control-label  font-14"  style="margin-top: 10px;"> CONTRACT PERIODE <span class="span-mandatory">*</span>  </label>
-		                        <input class="form-control number_valid_char" type="text" name="contract_periode"  id="contract_periode">
-		                        <i class="invalid-feedback" role="alert"></i>                                 
-		                      </div>
-		                    </div>
+							
+							<div class="col-sm-6">
+								<div class="form-group">
+								  <label class="control-label font-14"> SUPERVISOR <span class="span-mandatory">*</span></label>
+								   <select class="form-control select2" name="supervisor" id="supervisor" required>
+									   <option value="">  - SELECT SUPERVISOR -   </option>
+										@foreach($user as $u)
+											  <option value="{{$u->name}}"  > {{$u->name}} </option>
+									  @endforeach
+								  </select>
+								  <i class="invalid-feedback" role="alert"></i>
+								  <small style="color: red;display: none;" id="error_validate_supervisor">Supervisor Is Required</small>                                 
+								</div>
+							  </div>
+		                   
 
 		                    <div class="col-sm-6" id="div_hp" style="display: none">
 		                      <div class="form-group">
@@ -506,5 +509,14 @@
 	    		$('[name="other_ptos"]').val('');
 	    	}
 	    }
-    </script>
+	</script>
+	
+{{-- 	
+//
+    $startDate = '2017-05-09';
+    $months = 3;
+    $monthStr = $months == 1 ? 'month' : 'months';
+    
+    echo date('Y-m-d', strtotime('+ '.$months. ' '.$monthStr, strtotime($startDate ))); --}}
 @endsection
+

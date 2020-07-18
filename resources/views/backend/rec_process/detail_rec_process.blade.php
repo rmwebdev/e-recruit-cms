@@ -324,9 +324,18 @@
                             @endforeach
                         </select>
                       </div>
-                      <div>
-                        <button type="submit" class="btn bg-ungu" style="color:white"> Lanjut </a>
-                      </div>
+                      @php
+                      $role = \DB::table('e_recruit.roles')
+                      ->where('id', Auth::user()->role_id)
+                      ->get();
+                      @endphp
+
+                      @if($role[0]->name == 'Super User' || $role[0]->name == 'Admin HR' || $role[0]->name == 'Subco' )
+                        <div>
+                          <button type="submit" class="btn bg-ungu" style="color:white"> Lanjut </a>
+                        </div>
+                      @endif
+
                     </div>
                   </div>
                  

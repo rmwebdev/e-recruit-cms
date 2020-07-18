@@ -39,24 +39,24 @@ return [
             'prefix' => '',
         ],
 
-        //'mysql_1' => [
-          //  'driver' => 'mysql',
-           // 'host' => env('DB_HOST', 'localhost'),
-           // 'port' => env('DB_PORT', '3306'),
-           // 'database' => env('DB_DATABASE', 'e_recruitment_live'),
-           // 'username' => env('DB_USERNAME', 'recruit_apps'),
-           // 'password' => env('DB_PASSWORD', 'eRecruit@pp5'),
-           // 'unix_socket' => env('DB_SOCKET', ''),
+        'mysql_1' => [
+            'driver' => 'mysql',
+            'host' => env('DB_HOST', 'localhost'),
+            'port' => env('DB_PORT', '3306'),
+            'database' => env('DB_DATABASE', 'e_recruitment_live'),
+            'username' => env('DB_USERNAME', 'recruit_apps'),
+            'password' => env('DB_PASSWORD', 'eRecruit@pp5'),
+            'unix_socket' => env('DB_SOCKET', ''),
             //'charset' => 'utf8mb4',
             //'collation' => 'utf8mb4_unicode_ci',
-           // 'prefix' => '',
-           // 'strict' => false,
-           // 'engine' => null,
-           // 'options'   => array(
+            'prefix' => '',
+            'strict' => false,
+            'engine' => null,
+            'options'   => array(
                 //PDO::ATTR_PERSISTENT => true,
                 //PDO::MYSQL_ATTR_USE_BUFFERED_QUERY => FALSE
-          //  ),
-        //],
+            ),
+        ],
 
         'middleware' => [
             'driver' => 'pgsql',
@@ -72,11 +72,11 @@ return [
 		
 		'erecruit-dev' => [
             'driver' => 'pgsql',
-            'host' => env('DB_HOST_3', '172.16.0.140'),
+            'host' => env('DB_HOST_3', 'dev.puninar.com'), // set in database
             'port' => env('DB_PORT_3', '5432'),
-            'database' => env('DB_DATABASE_3', 'e_recruitment_live_v2'),
-            'username' => env('DB_USERNAME_3', 'recruit_apps'),
-            'password' => env('DB_PASSWORD_3', 'eRecruit@pp5'),
+            'database' => env('DB_DATABASE_3', 'e_recruitment_v2'),
+            'username' => env('DB_USERNAME_3', 'recruit_admin'),
+            'password' => env('DB_PASSWORD_3', 'eRecruit@dm'),
             'charset' => 'utf8',
             //'prefix' => '',
             //'sslmode' => 'prefer',

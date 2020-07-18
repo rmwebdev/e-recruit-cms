@@ -41,10 +41,16 @@ class IntegrationController extends Controller
 		Log::channel('integration_psikonogram')->info('IntegrationController.postUserToPsikonogram => begin');
 
 		try {
+			$data_return['stat'] = 0;
+			$data_return['msg'] = '';
 			if (isset($request['candidate_id'])) {
 				if ($request['candidate_id']!=null||$request['candidate_id']!='') {
 					$candidates = new Candidate;
-					$candidate = $candidates->where('candidate_id',$request['candidate_id'])->whereNull('status_user')->take(1)->get();
+					$candidate = $candidates->where('candidate_id',$request['candidate_id'])
+					->whereNull('status_user')
+					->whereNull('status_contract')
+					->take(1)
+					->get();
 
 					if (count($candidate)>0) {
 						$client = new GuzzleHttp\Client([
@@ -72,30 +78,47 @@ class IntegrationController extends Controller
 
 					    $resp = json_decode(json_encode($response),1);
 					    if (isset($resp['stat'])&&isset($resp['msg'])) {
-					    	if ($resp['stat']==1&&$resp['msg']=='success') {
+					    	if ($resp['stat']==1) {
 					    		$candidate_update = $candidates->where('candidate_id',$request['candidate_id'])
 					    		->update([
 					    			'status_user'=>'REGISTERED_ON_PSYCHOTEST'
 					    		]);
+					    		$data_return['stat'] = 1;
+								$data_return['msg'] = $candidate[0]->email.' has been registered on psiko.puninar.com.';
+					    	} elseif ($resp['stat']==2) {
+					    		$data_return['stat'] = 2;
+								$data_return['msg'] = $candidate[0]->email.' already exists on psiko.puninar.com.';
+					    	} else {
+					    		$data_return['stat'] = 2;
+								$data_return['msg'] = 'Upss (XR01). Please contact Administrator.';
 					    	}
+					    } else {
+					    	$data_return['stat'] = 3;
+							$data_return['msg'] = 'Upss (XR02). Please contact Administrator.';
 					    }
-
-					    return 1;
 					} else {
-						Log::channel('integration_psikonogram')->info('IntegrationController.postUserToPsikonogram => candidate not found');
-						return 2;
+						$data_return['stat'] = 3;
+						$data_return['msg'] = 'candidate_id not found.';
 					}
 				} else {
-					return 2;
+					$data_return['stat'] = 3;
+					$data_return['msg'] = 'candidate_id is not defined.';					
 				}
 			} else {
-				return 2;
+				$data_return['stat'] = 3;
+				$data_return['msg'] = 'candidate_id is not set.';
 			}
+			Log::channel('integration_psikonogram')->info('IntegrationController.postUserToPsikonogram => data_return');
+			Log::channel('integration_psikonogram')->info($data_return);
+
+			// only stat (1,3) will be shown on alert front-end
+			return json_encode($data_return);
 		} catch (Exception $e) {
 			Log::channel('integration_psikonogram')->info('IntegrationController.postUserToPsikonogram => exception');
 			Log::channel('integration_psikonogram')->info($e->getMessage());
-
-			return 2;
+			$data_return['stat'] = 3;
+			$data_return['msg'] = $e->getMessage();
+			return json_encode($data_return);
 		}
 
 

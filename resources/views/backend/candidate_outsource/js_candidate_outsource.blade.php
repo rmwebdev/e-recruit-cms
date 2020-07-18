@@ -2,7 +2,6 @@
 var user ='{{Auth::user()->nip}}';
 var nama_user ='{{Auth::user()->name}}';
 $(function(){
-
     var form_validate = $( "#form-fptk-outsource" );
         form_validate.validate({
             errorElement: 'p',
@@ -92,7 +91,7 @@ $(function(){
                 {data: 'user_name','name':'user_name'},
                 {data: 'request_reason','name':'request_reason'},
                 {data: 'requested_staff','name':'requested_staff'},
-                {data: 'join_staff','name':'requested_staff'},
+                {data: 'actual_staff','name':'actual_staff'},
                 {data: 'work_location','name':'work_location'},
                 {data: 'project_name','name':'project_name'},
                 {data: 'required_date_fptk','name':'required_date_fptk'},
@@ -162,6 +161,8 @@ $(function(){
                 },
                 {data: 'subco',name:'subco',
                     render: function(data, type, row){
+                    if(nama_user === 'User Developer')
+                    {
                        if(row.subco == 'yes')
                         {
                             return '<p align="center"><img src="images/checklist.png" width="20" height="20"></p>'
@@ -171,6 +172,11 @@ $(function(){
                             return '<p align="center"><img src="images/no_checklist.png" width="20" height="20"></p>';
                         }
                     }
+                    else
+                    {
+                        return '<p align="center"><img src="images/min.png" width="20" height="20"></p>';
+                    }
+                    }
                 }
         ],
          "columnDefs": [{
@@ -179,7 +185,6 @@ $(function(){
           "orderable": false
         }],
     });
-
     $('div.dataTables_filter input').unbind();
     $("div.dataTables_filter input").keyup( function (e) {
         if (e.keyCode == 13) {
@@ -193,6 +198,7 @@ $(function(){
       if (regex.test(key) || event.keyCode == 8 || event.keyCode == 9) {
           return true;
       }
+
         return false;
     });
 

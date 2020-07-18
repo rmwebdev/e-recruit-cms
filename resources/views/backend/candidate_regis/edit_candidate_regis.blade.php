@@ -6,7 +6,7 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header" style="background-color:#fff">
-                    <i class="fa fa-plus"></i> EDIT CANDIDATE DATA
+                    <i class="fa fa-plus"></i> EDIT CANDIDATE DATA 
                  	<a href="{{url('candidate-regis')}}" class="btn btn-warning pull-right" >CANCEL</a>
                 </div>
 

@@ -759,16 +759,23 @@ function updateRecProcess()
          .done(function(data) {
                 if(data.status == 'success')
                 {
-                    swal('Success',' ','success').then(function(){   
-                      if(type == 'view-all')
-                      {
-                        $(location).attr('href','/rec-process/view_all/?status='+status+'&q='+q+'&tot='+tot+'&type='+type);  
-                      }
-                      else
-                      {
-                        $(location).attr('href','/detail-rec-process?id='+job_id+'&status='+status+'&type='+type);   
-                      }
-                    });
+                  var swal_msg='';
+                  if(data.result_integrasi_stat == 1)
+                  {
+                    swal_msg=data.result_integrasi_msg;
+                  }
+
+                  swal('Success',""+ swal_msg +"",'success').then(function(){   
+                    if(type == 'view-all')
+                    {
+                      $(location).attr('href','/rec-process/view_all/?status='+status+'&q='+q+'&tot='+tot+'&type='+type);  
+                    }
+                    else
+                    {
+                      $(location).attr('href','/detail-rec-process?id='+job_id+'&status='+status+'&type='+type);   
+                    }
+                  });
+
                 }
             })
             .fail(function(data) {
@@ -876,9 +883,12 @@ function saveReason()
     var desc = tinyMCE.get('description').getContent();
     var value = $('[name=reason]').val();
     var proces = $('[name=process]').val();
+    var date_process_called = $('[name=date_process_called]').val();
+    
     data_form.append('reason',value);
     data_form.append('process',proces);
     data_form.append('pesan',desc);
+    data_form.append('date_process_called',date_process_called);
 
 
 

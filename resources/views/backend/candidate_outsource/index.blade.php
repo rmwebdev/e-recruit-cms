@@ -39,7 +39,7 @@
                                     <th>REQUESTER NAME</th>
                                     <th>REQUEST REASON</th>
                                     <th>REQUEST STAFF</th>
-                                    <th>JOIN STAFF</th>
+                                    <th>ACTUAL STAFF</th>
                                     <th>WORK LOCATION</th>
                                     <th>PROJECT NAME</th>
                                     <th>REQUIRED DATE</th>
